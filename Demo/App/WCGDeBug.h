@@ -3,7 +3,7 @@
 
 
 /*if need Debug ,set ENABLE_DEBUG to 1*/
-#define ENABLE_DEBUG              1
+#define ENABLE_DEBUG              0
 /*define test module,like LCD...*/
 #if (ENABLE_DEBUG == 1)
 /*if need debug LCD,change DebugLCD equal 1*/

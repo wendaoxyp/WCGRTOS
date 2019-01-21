@@ -101,12 +101,16 @@
 
 /* Standard includes. */
 #include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 /* Scheduler includes. */
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
 #include "croutine.h"
+#include "semphr.h"
+#include "event_groups.h"
 
 /* Demo application includes. */
 #include "Config_Bit.h"
@@ -120,7 +124,16 @@
 #include "timertest.h"
 #include "WCGDeBug.h"
 #include "PCF8583.h"
-
+#include "CAT24C512.h"
+#include "UART1.h"
+#include "UART2.h"
+#include "TR04.h"
+#include "LED.h"
+#include "KEY.h"
+#include "Common.h"
+#include "CheckData.h"
+#include "Error.h"
+#include "DW02.h"
 
 /* Demo task priorities. */
 #define mainBLOCK_Q_PRIORITY				( tskIDLE_PRIORITY + 2 )
@@ -134,7 +147,7 @@
 #define mainCHECK_TASK_PERIOD				( ( TickType_t ) 3000 / portTICK_PERIOD_MS )
 
 /* The number of flash co-routines to create. */
-#define mainNUM_FLASH_COROUTINES			( 5 )
+//#define mainNUM_FLASH_COROUTINES			( 5 )
 
 /* Baud rate used by the comtest tasks. */
 #define mainCOM_TEST_BAUD_RATE				( 19200 )
@@ -167,7 +180,7 @@ it is converted to a string. */
 /*
  * Setup the processor ready for the demo.
  */
-static void prvSetupHardware(void);
+//static void prvSetupHardware(void);
 
 /* Prototypes for the standard FreeRTOS callback/hook functions implemented
 within this file. */
@@ -180,7 +193,7 @@ void vApplicationStackOverflowHook(TaskHandle_t pxTask, char *pcTaskName);
 
 /*-----------------------------------------------------------*/
 void task_start(void *parameter);
-void vLEDShark(void *pvParameters);
+//void vLEDShark(void *pvParameters);
 //void LED456(void *pvParameters);
 
 UBaseType_t start_PRIORITY = 4;
@@ -189,19 +202,34 @@ UBaseType_t vLEDShark_PRIORITY = 3;
 //uint16_t configMINIMAL_STACK_SIZE = 128;
 //uint16_t configMINIMAL_STACK_SIZE 128;
 //uint16_t configMINIMAL_STACK_SIZE 128;
+/*Create EventGroup*/
+EventGroupHandle_t xEventGroupWCGFlag;
+#define Bit0GetPressureByTime      (1<<0)
+#define Bit4GetPressByUser         (1<<4)
+SemaphoreHandle_t xSemBinGetPress;
+
+BaseType_t CAT24_PC = 0;
+
+xQueueHandle xQueueUart1Pressure;
+xQueueHandle xQueueUart2GPRS;
+xQueueHandle xQueueUart3User;
+
+SemaphoreHandle_t xSemBinKey;
+SemaphoreHandle_t xSemBinSendByGPRS;
+SemaphoreHandle_t xSemBinGPRSIsLink;
 
 /*
  * Create the demo tasks then start the scheduler.
  */
 int main(void) {//2¸öLEDµÆÉÁË¸
     /* Configure any hardware required for this demo. */
-    prvSetupHardware();
+    //    prvSetupHardware();
 
     /* Create the standard demo tasks. */
     //    vStartBlockingQueueTasks(mainBLOCK_Q_PRIORITY);
     //    vStartIntegerMathTasks(tskIDLE_PRIORITY);
     //    vStartFlashCoRoutines(mainNUM_FLASH_COROUTINES);
-    vAltStartComTestTasks(mainCOM_TEST_PRIORITY, mainCOM_TEST_BAUD_RATE, mainCOM_TEST_LED);
+    //    vAltStartComTestTasks(mainCOM_TEST_PRIORITY, mainCOM_TEST_BAUD_RATE, mainCOM_TEST_LED);
     //    vCreateBlockTimeTasks();
 
     /* Create the test tasks defined within this file. */
@@ -226,9 +254,9 @@ int main(void) {//2¸öLEDµÆÉÁË¸
 
 /*-----------------------------------------------------------*/
 
-static void prvSetupHardware(void) {
-    vParTestInitialise();
-}
+//static void prvSetupHardware(void) {
+//    vParTestInitialise();
+//}
 
 /*-----------------------------------------------------------*/
 
@@ -315,8 +343,9 @@ void vApplicationStackOverflowHook(TaskHandle_t pxTask, char *pcTaskName) {
     for (;;);
 }
 
-void vLEDShark(void *pvParameters) {
+void vLEDShark1(void *pvParameters) {
     pvParameters = pvParameters;
+    vLEDInit();
 
     for (;;) {
         _LATE7 ^= 1; //green led
@@ -324,21 +353,201 @@ void vLEDShark(void *pvParameters) {
     }
 }
 
-void LED456(void *pvParameters) {
-    pvParameters = pvParameters;
+//void LED456(void *pvParameters) {
+//    pvParameters = pvParameters;
+//    vLEDInit();
+//    for (;;) {
+//        vLEDShark(LEDGreen, 1000, 300, 4);
+//    }
+//}
+extern void vTaskKey(void *parameter);
+extern void vTaskGetPressure(void* parameter);
 
+void task_start(void *parameter) {
+    vLCDInit();
+    //    UART3_Init();
+    xTaskCreate(vTaskGetPressure, "vTaskGetPressure", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL);
+    xTaskCreate(vTaskKey, "led456", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY - 1, NULL);
+    /*Get EEPROM Write Point Count*/
+    //    xCAT24ReadPointCount(CAT24_PC);
+    vTaskDelete(NULL);
+}
+
+void vTaskGetPressure(void* parameter) {
+    unsigned char ucGetData[10];
+    unsigned char ucGetOffset;
+    unsigned char ucCount = 0;
+    float fPress;
+    ErrCode xErrCodeInPressure = ErrorNoError;
+
+    /*use UART1 and RS485_CON(PEc6),initialization UART2*/
+    vUART1Init();
+    /*create uart1 receive buffer notify*/
+    xQueueUart1Pressure = xQueueCreate(1, UART1_BUFFER_LENGTH);
+    /*create semaphorebinary*/
+    //    vSemaphoreCreateBinary(xSemBinGetPress);
+    /*create flag event*/
+    xEventGroupWCGFlag = xEventGroupCreate();
     for (;;) {
-        _LATE5 ^= 1;
-        vTaskDelay(100);
+        /* it's time to get pressure or user need get pressure,then wake up WCG,and send xGetPressSem*/
+        /*wait for uart1 receive data*/
+        if (xQueueReceive(xQueueUart1Pressure, ucUart1Buffer, portMAX_DELAY) != pdFALSE) {
+            /*xEventGropWCGFlag bit0|bit4 is One,every 30ms*/
+            /*delay for get last byte*/
+            vTaskDelay(3);
+            vUART1RxGet4Byte();
+            ucCount = 0;
+            while (bUART1BufferRead(ucGetData + ucCount++));
+
+            if (ucCount >= PressReciveLength) {
+                ucGetOffset = Str_Find_Head(ucGetData, TR04, 9, 2);
+                if (ucGetOffset) {
+                    if (bCRC16IsRight1(ucGetData + ucGetOffset - 1, 7)) {
+                        CharToFloat(&fPress, ucGetData + ucGetOffset + 2);
+                        vLCDShowNums((unsigned int) (fPress * 100), false);
+                        vLCDShowDigitalPoint(2);
+                    } else {
+                        xErrCodeInPressure = ErrorGetPressureValueCRCNoRight;
+                    }
+                } else
+                    xErrCodeInPressure = ErrorGetPressureValueInvaildHead;
+            } else if (ucCount == 0) {
+                xErrCodeInPressure = ErrorGetPressureValueNoAck;
+            } else
+                xErrCodeInPressure = ErrorGetPressureValueLossBytes;
+            if (xErrCodeInPressure != ErrorNoError) {
+                vErrorPrintCode(xErrCodeInPressure, OutputInLCD);
+                vLCDShowPoint(eError, SEGSHOW);
+            }
+        }
+        Nop();
     }
 }
 
+void vTaskSendByGPRS(void*parameter) {
+    uint8_t ucCount;
+    uint8_t ucBuffer[256];
+    uint16_t usGetBufferSize = 0;
+    bool bGPRSIsReady = false;
 
+    /*Init UART2*/
+    vUART2Init();
+    /*create semaphorebinary*/
+    xSemBinSendByGPRS = xSemaphoreCreateBinary();
+    /*clear ucBuffer*/
+    //    memset(ucBuffer,1,256);
+    for (;;) {
+        /*wait for time to send data by GPRS*/
+        if (xSemaphoreTake(xSemBinSendByGPRS, portMAX_DELAY) == pdTRUE) {
+            /*GPRS EN is High*/
+            for (ucCount = 0; ucCount < 5; ucCount++) {
+                GPRSEnable();
+                vTaskDelay(100);
+                /*send "+TURONG TECH"*/
+                vGPRSSendString((uint8_t *) GPRSCmdGetVersion);
+                /*Receive "+TXYBJT DTU Software,VERtrkj_v04.0??"*/
+                vUART2SetGetLength(36);
+                /*wait for get buffer*/
+                if (xQueueReceive(xQueueUart2GPRS, ucUart2Buffer, pdMS_TO_TICKS(1000)) == pdTRUE) {
+                    /*get last byte*/
+                    vUART2RxGet4Byte();
+                    /*clear buffer*/
+                    usGetBufferSize = 0;
+                    /*receive data*/
+                    while (bUART2BufferRead(ucBuffer + usGetBufferSize++));
+                    /*check data*/
+                    if (Str_Find_Head(ucBuffer, (unsigned char*) GPRSVersion, usGetBufferSize, strlen(GPRSVersion))) { /*GPRS is ready*/
+                        bGPRSIsReady = true;
+                    }
+                }
+            }
+            if (bGPRSIsReady) {
+                /*Send GPRS */
+                vGPRSSendString((uint8_t *) GPRSCmdDialing);
+                /*Wait for GPRS link*/
+                if (xSemaphoreTake(xSemBinGPRSIsLink, pdMS_TO_TICKS(50000)) == pdTRUE) {
+                    /*packet send to GPRS protocal*/
 
-void task_start(void *parameter) {
-    xTaskCreate(vLEDShark, "vLEDShark", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL);
-    //    xTaskCreate(LED456, "led456", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY - 1, NULL);
-    vTaskDelete(NULL);
+                    for (ucCount = 0; ucCount < 3; ucCount++) {
+                        /*send GPSR*/
+                        vGPRSSendString("it's pressure protocal");
+                        vUART2SetGetLength(4);
+                        /*wait for get buffer*/
+                        if (xQueueReceive(xQueueUart2GPRS, ucUart2Buffer, pdMS_TO_TICKS(3000)) == pdTRUE) {
+                            /*get last byte*/
+                            vUART2RxGet4Byte();
+                            /*clear buffer*/
+                            usGetBufferSize = 0;
+                            /*receive data*/
+                            while (bUART2BufferRead(ucBuffer + usGetBufferSize++));
+                            /*check data*/
+                            if (Str_Find_Head(ucBuffer, (unsigned char*) GPRSVersion, usGetBufferSize, strlen(GPRSVersion))) { /*GPRS is ready*/
+                                bGPRSIsReady = true;
+                            }
+                        }
+                    }
+                    Nop();
+                } else {
+                    //                FailGPRSConnectCount++;
+                    //ERRORSend();
+                    Nop();
+                }
+                /*GPRS EN is Low*/
+                GPRSDisable();
+            } else {
+                //error
+                Nop();
+            }
+        }
+    }
 }
+
+void vTaskKey(void *parameter) {
+    unsigned char ucKeyState;
+    /*create semaphore*/
+    xSemBinKey = xSemaphoreCreateBinary();
+    /*Init key*/
+    vKeyInit();
+    vLEDInit();
+    for (;;) {
+        if (xSemaphoreTake(xSemBinKey, portMAX_DELAY) == pdTRUE) {
+            //            vKeyScan(&ucKeyState);
+            //            vTaskDelay(10);
+            //            vKeyUserFunction(ucKeyState);
+            vUART1Send((unsigned char*) TR04, sizeof (TR04));
+            vLEDShark(LEDGreen, 300, 100, 3);
+        }
+    }
+}
+
+void vTaskUserCommunication(void *parameter) {
+    xQueueUart3User = xQueueCreate(1, UART3_BUFFER_LENGTH);
+    for (;;) {
+    }
+}
+
+void vTaskShowLCD(void *parameter) {
+    vLCDInit();
+
+    for (;;) {
+
+    }
+}
+
+void vTaskCalaClockTime(void *parameter) {
+
+    for (;;) {
+    }
+}
+
+void vTaskStorageSample(void *parameter) {
+    for (;;) {
+        /*packet data in eeprom*/
+        //            xCAT24WriteBytes(CAT24_PC, Data, length);
+        //            CAT24_PC += length;            
+        //            xCAT24WritePointCount(CAT24_PC );
+    }
+}
+
 
 

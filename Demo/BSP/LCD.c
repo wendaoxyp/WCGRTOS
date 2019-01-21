@@ -1,5 +1,3 @@
-
-#include <time.h>
 #include "LCD.h"
 #include "WCGDeBug.h"
 #include "Common.h"
@@ -22,9 +20,14 @@ const uint8_t LCD_NUM_OFFSET[7] = {0, 2, 0, 2, 4, 6, 8};
 
 /************************************************定义函数*****************************/
 
-/*LCD initialization*/
+/*************************************
+ * Function: vLCDInit
+ * Description: LCD initialization
+ * Input: pvString,ucBytes
+ * Output: void
+ * notice: void
+ *************************************/
 void vLCDInit(void) {
-
     /*设置SEG0-15为段驱动引脚*/
     LCDSE0 = 0xFFFF;
     /*设置SEG16-17为段驱动引脚*/
@@ -41,7 +44,14 @@ void vLCDInit(void) {
     LCDCON = 0x800B;
 }
 
-/*通过usSeg值,判断段码位置，并设置为bOperation;ep:vLCDShowPoint(ePower) LCDDATA*/
+/*************************************
+ * Function: vLCDShowPoint
+ * Description: 通过usSeg值,判断段码位置，并设置为bOperation;
+ * Input: usSeg,ucBytes
+ * Output: void
+ * notice: ep:vLCDShowPoint(ePower) LCDDATA
+ *************************************/
+
 void vLCDShowPoint(uint16_t usSeg, bool bOperation) {
     uint8_t ucCom;
     uint8_t ucSeg;
@@ -92,10 +102,15 @@ void vLCDShowPoint(uint16_t usSeg, bool bOperation) {
     }
 }
 
-/*LCD show one Num 
- * parameter ucNum:0-9
- * parameter ucPosition:0-6
- */
+/*************************************
+ * Function: vLCDShowNum
+ * Description: LCD show one Num 
+ * Input: ucNum,ucPosition
+ * Output: void
+ * notice: parameter ucNum:0-9
+ *         parameter ucPosition:0-6
+ *************************************/
+
 void vLCDShowNum(uint8_t ucNum, uint8_t ucPosition) {
     uint8_t ucCnt;
     bool bShowOrHide = SEGSHOW;
@@ -115,13 +130,18 @@ void vLCDShowNum(uint8_t ucNum, uint8_t ucPosition) {
     }
 }
 
-/*LCD show Battery Segmnet pin
- * parameter:ucBatterySign
- * 0:ucBatterySign Frame
- * 1:one ucBatterySign
- * ...
- * 3:Full ucBatterySign
- */
+/*************************************
+ * Function: vLCDShowBattery
+ * Description:LCD show Battery Segmnet pin
+ * Input: ucBatterySign
+ * Output: void
+ * notice: parameter:ucBatterySign
+ *         0:ucBatterySign Frame
+ *         1:one ucBatterySign
+ *          ...
+ *         3:Full ucBatterySign
+ *************************************/
+
 void vLCDShowBattery(uint8_t ucBatterySign) {
     unsigned char ucCnt;
     unsigned char ucNowSign;
@@ -138,13 +158,18 @@ void vLCDShowBattery(uint8_t ucBatterySign) {
     }
 }
 
-/*LCD show GPRS sign
- * parameter:ucGPRSSign
- * 0:none GPRSSign
- * 1:one GPRSSign
- * ...
- * 3:Full GPRSSign
- */
+/*************************************
+ * Function: vLCDShowGPRSSign
+ * Description: LCD show GPRS sign
+ * Input: ucGPRSSign
+ * Output: void
+ * notice:  parameter:ucGPRSSign
+ *          0:none GPRSSign
+ *          1:one GPRSSign
+ *          ...
+ *          3:Full GPRSSign
+ *************************************/
+
 void vLCDShowGPRSSign(uint8_t ucGPRSSign) {
     unsigned char ucCnt;
     unsigned char ucNowSign;
@@ -160,13 +185,17 @@ void vLCDShowGPRSSign(uint8_t ucGPRSSign) {
     }
 }
 
-/*显示小数点
- * parameter:ucPosition
- * 0:12345
- * 1:1234.5
- * ...
- * 4:12.3424
- */
+/*************************************
+ * Function: vLCDShowDigitalPoint
+ * Description: 显示小数点
+ * Input: ucPosition
+ * Output: void
+ * notice:  parameter:ucPosition
+ *          0:12345
+ *          1:1234.5
+ *            ...
+ *          4:12.3424
+ *************************************/
 void vLCDShowDigitalPoint(uint8_t ucPosition) {
     unsigned char ucCnt;
     unsigned char ucNowPosition;
@@ -182,7 +211,14 @@ void vLCDShowDigitalPoint(uint8_t ucPosition) {
     }
 }
 
-/*LCD Show Nums,like 123412*/
+/*************************************
+ * Function: vLCDShowNums
+ * Description: LCD Show Nums,like 123412
+ * Input: ulNums,bFirstZeroshow
+ * Output: void
+ * notice: 
+ *************************************/
+
 void vLCDShowNums(uint32_t ulNums, bool bFirstZeroshow) {
     char cCnt; //
     uint8_t ucNumTmep;
@@ -206,10 +242,14 @@ void vLCDShowNums(uint32_t ulNums, bool bFirstZeroshow) {
     }
 }
 
-/*LCD Clear Nums
- * usage :vLCDShowNums(1234567L, FristZeroShow);
- * note:number last bit must add L
- */
+/*************************************
+ * Function: vLCDClearNums
+ * Description: LCD Clear Nums,vLCDShowNums(1234567L, FristZeroShow);
+ * Input: void
+ * Output: void
+ * notice: number last bit must add L
+ *************************************/
+
 void vLCDClearNums(void) {
     unsigned char x, y;
     unsigned char ucOffset;
@@ -225,10 +265,18 @@ void vLCDClearNums(void) {
     vLCDShowDigitalPoint(0);
 }
 
-/*LCD clear Screen*/
+/*************************************
+ * Function: vLCDClearScreen
+ * Description: LCD clear Screen
+ * Input: void
+ * Output: void
+ * notice: 
+ *************************************/
+
 void vLCDClearScreen(void) {
     uint16_t lcd_x = 0, lcd_y = 0;
     for (lcd_y = 0; lcd_y < 4; lcd_y++)
         for (lcd_x = 0; lcd_x < LCDSEGSIZE; lcd_x++)
             vLCDShowPoint(lcd_x + lcd_y * LCDSEGSIZE, SEGHIDE);
 }
+

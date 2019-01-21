@@ -20,6 +20,8 @@
 #define CAT24_WP                _LATF2
 #define CAT24_WP_DIR            _TRISF2
 #define CAT24_ADD               0b10101000
+/*define CAT24PointCount stroge address*/
+#define CAT24_PC_ADD            0xFFFE
 //#define CAT24_ERR_W_IC_ADD      0x10    //Ð´ICµØÖ·(º¬²Ù×÷Âë)Ê§°Ü
 //#define CAT24_ERR_W_ADDH        0x11    //Ð´¸ßÎ»µØÖ·Ê§°Ü
 //#define CAT24_ERR_W_ADDL        0x12    //Ð´µÍÎ»µØÖ·Ê§°Ü
@@ -42,6 +44,11 @@
         xCAT24WriteReadPage(usAddress,  pucWriteData,ucBytes, CAT24_WRITE)
 #define xCAT24ReadBytes(usAddress, pucWriteData,ucBytes) \
         xCAT24WriteReadPage(usAddress,  pucWriteData,ucBytes, CAT24_READ)
+#define xCAT24WritePointCount(usPointCount) \
+        xCAT24WriteBytes(CAT24_PC_ADD,(unsigned char*)&usPointCount,2);
+#define xCAT24ReadPointCount(usPointCount) \
+        xCAT24ReadBytes(CAT24_PC_ADD,(unsigned char *)&usPointCount,2);
+/*type define*/
 typedef unsigned char CAT24_STA;
 /***************************************************************************
  * Prototype 

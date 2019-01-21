@@ -11,15 +11,20 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-//typedef uint16_t(*FP_CRC)(uint8_t*, const uint8_t);
 
-
-//uint16_t CRC16_Check(uint8_t *CRC_Buf, const uint8_t CRC_Leni);
-//uint16_t Sum_Check(uint8_t *frame, const uint8_t bytes);
-//uint8_t Sum_Check256(uint8_t *frame, const uint16_t bytes);
-//bool SumCheckIsRight(uint8_t *frame, const uint16_t bytes, const uint8_t CheckSum);
-//bool CRCIsRight(uint8_t * CRC_Buf, const uint8_t CRC_Leni, const uint8_t* CHC_Dat);
-//bool CheckSrting(uint8_t*dat1, uint8_t*dat2, const uint8_t num);
+/*CRC16 check*/
+uint16_t usCRC16Check(uint8_t *pucCRCBuf, const uint8_t ucCRCLength);
+/*sum check*/
+uint16_t usSumCheck(uint8_t *pucCRCBuf, const uint8_t ucBufLength);
+/*CRC16 is right*/
+#define  bCRC16IsRight(pucBuf,ucBufLength,usCheckDat) \
+               (((usCheckDat<<8)+(usCheckDat>>8)) == usCRC16Check(pucBuf, ucBufLength))
+/*CRC16 is right by protocal*/
+#define  bCRC16IsRight1(pucBuf,ucBufLength) \
+               (((unsigned int)(*(ucBufLength+pucBuf+1))<<8)+(*(ucBufLength+pucBuf)) == usCRC16Check(pucBuf, ucBufLength))
+/*sum check is right*/
+#define bSumCheckIsRight(pucBuf,ucBufLength,usCheckDat)\
+        ((usCheckDat&0x00FF)==usSumCheck(pucBuf,ucBufLength))
 
 #endif	/* CRC16_H */
 

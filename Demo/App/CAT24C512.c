@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #include "CAT24C512.h"
 #include "I2C_S.h"
 
@@ -53,3 +55,6 @@ CAT24_STA xCAT24WriteReadPage(const unsigned int usRegisterAddress,
     CAT24_WP = 1;
     return xCATSta;
 }
+
+
+

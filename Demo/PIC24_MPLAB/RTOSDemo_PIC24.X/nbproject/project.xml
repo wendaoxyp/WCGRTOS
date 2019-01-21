@@ -15,9 +15,7 @@
             <sourceRootList>
                 <sourceRootElem>..</sourceRootElem>
                 <sourceRootElem>..\serial</sourceRootElem>
-                <sourceRootElem>..\..\..\Source\portable\MemMang</sourceRootElem>
                 <sourceRootElem>..\ParTest</sourceRootElem>
-                <sourceRootElem>..\..\..\Source\include</sourceRootElem>
                 <sourceRootElem>..\..\Common\Minimal</sourceRootElem>
                 <sourceRootElem>..\..\..\Source</sourceRootElem>
                 <sourceRootElem>..\..\..\Source\portable\MPLAB\PIC24_dsPIC</sourceRootElem>
@@ -35,6 +33,7 @@
             </formatting>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>protocal</word>
             <word>Scre</word>
         </spellchecker-wordlist>
     </configuration>

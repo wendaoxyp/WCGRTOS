@@ -7,12 +7,12 @@
 #include <xc.h>
 
 void PPSInit(void) {
-    TRISBbits.TRISB9 = 0; //控制口设置位输出 485_CON
-    TRISBbits.TRISB8 = 1; //设置为输入/
-    TRISBbits.TRISB10 = 0; //设置为输出
-    ANSBbits.ANSB8 = 0; //数字输入
-    ANSBbits.ANSB9 = 0;
-    ANSBbits.ANSB10 = 1;
+    //    TRISBbits.TRISB9 = 0; //控制口设置位输出 485_CON
+    //    TRISBbits.TRISB8 = 1; //设置为输入/
+    //    TRISBbits.TRISB10 = 0; //设置为输出
+    //    ANSBbits.ANSB8 = 0; //数字输入
+    //    ANSBbits.ANSB9 = 0;
+    //    ANSBbits.ANSB10 = 1;
     //    LATBbits.LATB10 = 0;
 
     __builtin_write_OSCCONL(OSCCON & 0xbf); // unlock PPS

@@ -256,3 +256,5 @@ void vDebugTaskHook(void) {
     /*endif (DebugCAT24C512 == 1)*/
 #endif
 }
+
+

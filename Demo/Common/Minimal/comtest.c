@@ -159,7 +159,7 @@ void vAltStartComTestTasks( UBaseType_t uxPriority, uint32_t ulBaudRate, UBaseTy
 {
 	/* Initialise the com port then spawn the Rx and Tx tasks. */
 	uxBaseLED = uxLED;
-	xSerialPortInitMinimal( ulBaudRate, comBUFFER_LEN );
+	xSerialPortInitMinimal( ulBaudRate, comBUFFER_LEN);
 
 	/* The Tx task is spawned with a lower priority than the Rx task. */
 //	xTaskCreate( vComTxTask, "COMTx", comSTACK_SIZE, NULL, uxPriority - 1, ( TaskHandle_t * ) NULL );

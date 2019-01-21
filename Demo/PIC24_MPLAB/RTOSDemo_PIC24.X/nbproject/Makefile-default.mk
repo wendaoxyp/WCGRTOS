@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../../App/ParTest/ParTest.c ../../App/serial/serial.c ../../App/CAT24C512.c ../../App/CheckData.c ../../App/Common.c ../../App/PC.c ../../App/PCF8583.c ../../App/SerialBuffer.c ../WCGDebug.c ../../BSP/timertest.c ../../BSP/Debug.c ../../BSP/I2C_S.c ../../BSP/INT.c ../../BSP/LCD.c ../../BSP/PPS.c ../../BSP/RS485.c ../../BSP/Sleep.c ../../BSP/TIM.c ../../BSP/UART2.c ../../BSP/UART3.c ../../../Source/portable/MPLAB/PIC24_dsPIC/port.c ../../../Source/portable/MPLAB/PIC24_dsPIC/portasm_PIC24.S ../../../Source/tasks.c ../../../Source/portable/MemMang/heap_4.c ../../../Source/list.c ../../../Source/queue.c ../../Common/Minimal/BlockQ.c ../../Common/Minimal/blocktim.c ../../Common/Minimal/comtest.c ../../Common/Minimal/integer.c ../main.c
+SOURCEFILES_QUOTED_IF_SPACED=../../App/CAT24C512.c ../../App/CheckData.c ../../App/Common.c ../../App/PCF8583.c ../WCGDebug.c ../../App/KEY.c ../../App/LED.c ../../BSP/Debug.c ../../BSP/I2C_S.c ../../BSP/INT.c ../../BSP/LCD.c ../../BSP/Sleep.c ../../BSP/TIM.c ../../BSP/UART2.c ../../BSP/UART3.c ../../BSP/UART1.c ../../../Source/portable/MPLAB/PIC24_dsPIC/port.c ../../../Source/portable/MPLAB/PIC24_dsPIC/portasm_PIC24.S ../../../Source/tasks.c ../../../Source/portable/MemMang/heap_4.c ../../../Source/list.c ../../../Source/queue.c ../../../Source/event_groups.c ../../Common/Minimal/BlockQ.c ../../Common/Minimal/blocktim.c ../../Common/Minimal/integer.c ../main.c ../../App/Error.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/862485765/ParTest.o ${OBJECTDIR}/_ext/1875937438/serial.o ${OBJECTDIR}/_ext/1445226593/CAT24C512.o ${OBJECTDIR}/_ext/1445226593/CheckData.o ${OBJECTDIR}/_ext/1445226593/Common.o ${OBJECTDIR}/_ext/1445226593/PC.o ${OBJECTDIR}/_ext/1445226593/PCF8583.o ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o ${OBJECTDIR}/_ext/1472/WCGDebug.o ${OBJECTDIR}/_ext/1445226623/timertest.o ${OBJECTDIR}/_ext/1445226623/Debug.o ${OBJECTDIR}/_ext/1445226623/I2C_S.o ${OBJECTDIR}/_ext/1445226623/INT.o ${OBJECTDIR}/_ext/1445226623/LCD.o ${OBJECTDIR}/_ext/1445226623/PPS.o ${OBJECTDIR}/_ext/1445226623/RS485.o ${OBJECTDIR}/_ext/1445226623/Sleep.o ${OBJECTDIR}/_ext/1445226623/TIM.o ${OBJECTDIR}/_ext/1445226623/UART2.o ${OBJECTDIR}/_ext/1445226623/UART3.o ${OBJECTDIR}/_ext/1343266892/port.o ${OBJECTDIR}/_ext/1343266892/portasm_PIC24.o ${OBJECTDIR}/_ext/449926602/tasks.o ${OBJECTDIR}/_ext/1884096877/heap_4.o ${OBJECTDIR}/_ext/449926602/list.o ${OBJECTDIR}/_ext/449926602/queue.o ${OBJECTDIR}/_ext/1163846883/BlockQ.o ${OBJECTDIR}/_ext/1163846883/blocktim.o ${OBJECTDIR}/_ext/1163846883/comtest.o ${OBJECTDIR}/_ext/1163846883/integer.o ${OBJECTDIR}/_ext/1472/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/862485765/ParTest.o.d ${OBJECTDIR}/_ext/1875937438/serial.o.d ${OBJECTDIR}/_ext/1445226593/CAT24C512.o.d ${OBJECTDIR}/_ext/1445226593/CheckData.o.d ${OBJECTDIR}/_ext/1445226593/Common.o.d ${OBJECTDIR}/_ext/1445226593/PC.o.d ${OBJECTDIR}/_ext/1445226593/PCF8583.o.d ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o.d ${OBJECTDIR}/_ext/1472/WCGDebug.o.d ${OBJECTDIR}/_ext/1445226623/timertest.o.d ${OBJECTDIR}/_ext/1445226623/Debug.o.d ${OBJECTDIR}/_ext/1445226623/I2C_S.o.d ${OBJECTDIR}/_ext/1445226623/INT.o.d ${OBJECTDIR}/_ext/1445226623/LCD.o.d ${OBJECTDIR}/_ext/1445226623/PPS.o.d ${OBJECTDIR}/_ext/1445226623/RS485.o.d ${OBJECTDIR}/_ext/1445226623/Sleep.o.d ${OBJECTDIR}/_ext/1445226623/TIM.o.d ${OBJECTDIR}/_ext/1445226623/UART2.o.d ${OBJECTDIR}/_ext/1445226623/UART3.o.d ${OBJECTDIR}/_ext/1343266892/port.o.d ${OBJECTDIR}/_ext/1343266892/portasm_PIC24.o.d ${OBJECTDIR}/_ext/449926602/tasks.o.d ${OBJECTDIR}/_ext/1884096877/heap_4.o.d ${OBJECTDIR}/_ext/449926602/list.o.d ${OBJECTDIR}/_ext/449926602/queue.o.d ${OBJECTDIR}/_ext/1163846883/BlockQ.o.d ${OBJECTDIR}/_ext/1163846883/blocktim.o.d ${OBJECTDIR}/_ext/1163846883/comtest.o.d ${OBJECTDIR}/_ext/1163846883/integer.o.d ${OBJECTDIR}/_ext/1472/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1445226593/CAT24C512.o ${OBJECTDIR}/_ext/1445226593/CheckData.o ${OBJECTDIR}/_ext/1445226593/Common.o ${OBJECTDIR}/_ext/1445226593/PCF8583.o ${OBJECTDIR}/_ext/1472/WCGDebug.o ${OBJECTDIR}/_ext/1445226593/KEY.o ${OBJECTDIR}/_ext/1445226593/LED.o ${OBJECTDIR}/_ext/1445226623/Debug.o ${OBJECTDIR}/_ext/1445226623/I2C_S.o ${OBJECTDIR}/_ext/1445226623/INT.o ${OBJECTDIR}/_ext/1445226623/LCD.o ${OBJECTDIR}/_ext/1445226623/Sleep.o ${OBJECTDIR}/_ext/1445226623/TIM.o ${OBJECTDIR}/_ext/1445226623/UART2.o ${OBJECTDIR}/_ext/1445226623/UART3.o ${OBJECTDIR}/_ext/1445226623/UART1.o ${OBJECTDIR}/_ext/1343266892/port.o ${OBJECTDIR}/_ext/1343266892/portasm_PIC24.o ${OBJECTDIR}/_ext/449926602/tasks.o ${OBJECTDIR}/_ext/1884096877/heap_4.o ${OBJECTDIR}/_ext/449926602/list.o ${OBJECTDIR}/_ext/449926602/queue.o ${OBJECTDIR}/_ext/449926602/event_groups.o ${OBJECTDIR}/_ext/1163846883/BlockQ.o ${OBJECTDIR}/_ext/1163846883/blocktim.o ${OBJECTDIR}/_ext/1163846883/integer.o ${OBJECTDIR}/_ext/1472/main.o ${OBJECTDIR}/_ext/1445226593/Error.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1445226593/CAT24C512.o.d ${OBJECTDIR}/_ext/1445226593/CheckData.o.d ${OBJECTDIR}/_ext/1445226593/Common.o.d ${OBJECTDIR}/_ext/1445226593/PCF8583.o.d ${OBJECTDIR}/_ext/1472/WCGDebug.o.d ${OBJECTDIR}/_ext/1445226593/KEY.o.d ${OBJECTDIR}/_ext/1445226593/LED.o.d ${OBJECTDIR}/_ext/1445226623/Debug.o.d ${OBJECTDIR}/_ext/1445226623/I2C_S.o.d ${OBJECTDIR}/_ext/1445226623/INT.o.d ${OBJECTDIR}/_ext/1445226623/LCD.o.d ${OBJECTDIR}/_ext/1445226623/Sleep.o.d ${OBJECTDIR}/_ext/1445226623/TIM.o.d ${OBJECTDIR}/_ext/1445226623/UART2.o.d ${OBJECTDIR}/_ext/1445226623/UART3.o.d ${OBJECTDIR}/_ext/1445226623/UART1.o.d ${OBJECTDIR}/_ext/1343266892/port.o.d ${OBJECTDIR}/_ext/1343266892/portasm_PIC24.o.d ${OBJECTDIR}/_ext/449926602/tasks.o.d ${OBJECTDIR}/_ext/1884096877/heap_4.o.d ${OBJECTDIR}/_ext/449926602/list.o.d ${OBJECTDIR}/_ext/449926602/queue.o.d ${OBJECTDIR}/_ext/449926602/event_groups.o.d ${OBJECTDIR}/_ext/1163846883/BlockQ.o.d ${OBJECTDIR}/_ext/1163846883/blocktim.o.d ${OBJECTDIR}/_ext/1163846883/integer.o.d ${OBJECTDIR}/_ext/1472/main.o.d ${OBJECTDIR}/_ext/1445226593/Error.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/862485765/ParTest.o ${OBJECTDIR}/_ext/1875937438/serial.o ${OBJECTDIR}/_ext/1445226593/CAT24C512.o ${OBJECTDIR}/_ext/1445226593/CheckData.o ${OBJECTDIR}/_ext/1445226593/Common.o ${OBJECTDIR}/_ext/1445226593/PC.o ${OBJECTDIR}/_ext/1445226593/PCF8583.o ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o ${OBJECTDIR}/_ext/1472/WCGDebug.o ${OBJECTDIR}/_ext/1445226623/timertest.o ${OBJECTDIR}/_ext/1445226623/Debug.o ${OBJECTDIR}/_ext/1445226623/I2C_S.o ${OBJECTDIR}/_ext/1445226623/INT.o ${OBJECTDIR}/_ext/1445226623/LCD.o ${OBJECTDIR}/_ext/1445226623/PPS.o ${OBJECTDIR}/_ext/1445226623/RS485.o ${OBJECTDIR}/_ext/1445226623/Sleep.o ${OBJECTDIR}/_ext/1445226623/TIM.o ${OBJECTDIR}/_ext/1445226623/UART2.o ${OBJECTDIR}/_ext/1445226623/UART3.o ${OBJECTDIR}/_ext/1343266892/port.o ${OBJECTDIR}/_ext/1343266892/portasm_PIC24.o ${OBJECTDIR}/_ext/449926602/tasks.o ${OBJECTDIR}/_ext/1884096877/heap_4.o ${OBJECTDIR}/_ext/449926602/list.o ${OBJECTDIR}/_ext/449926602/queue.o ${OBJECTDIR}/_ext/1163846883/BlockQ.o ${OBJECTDIR}/_ext/1163846883/blocktim.o ${OBJECTDIR}/_ext/1163846883/comtest.o ${OBJECTDIR}/_ext/1163846883/integer.o ${OBJECTDIR}/_ext/1472/main.o
+OBJECTFILES=${OBJECTDIR}/_ext/1445226593/CAT24C512.o ${OBJECTDIR}/_ext/1445226593/CheckData.o ${OBJECTDIR}/_ext/1445226593/Common.o ${OBJECTDIR}/_ext/1445226593/PCF8583.o ${OBJECTDIR}/_ext/1472/WCGDebug.o ${OBJECTDIR}/_ext/1445226593/KEY.o ${OBJECTDIR}/_ext/1445226593/LED.o ${OBJECTDIR}/_ext/1445226623/Debug.o ${OBJECTDIR}/_ext/1445226623/I2C_S.o ${OBJECTDIR}/_ext/1445226623/INT.o ${OBJECTDIR}/_ext/1445226623/LCD.o ${OBJECTDIR}/_ext/1445226623/Sleep.o ${OBJECTDIR}/_ext/1445226623/TIM.o ${OBJECTDIR}/_ext/1445226623/UART2.o ${OBJECTDIR}/_ext/1445226623/UART3.o ${OBJECTDIR}/_ext/1445226623/UART1.o ${OBJECTDIR}/_ext/1343266892/port.o ${OBJECTDIR}/_ext/1343266892/portasm_PIC24.o ${OBJECTDIR}/_ext/449926602/tasks.o ${OBJECTDIR}/_ext/1884096877/heap_4.o ${OBJECTDIR}/_ext/449926602/list.o ${OBJECTDIR}/_ext/449926602/queue.o ${OBJECTDIR}/_ext/449926602/event_groups.o ${OBJECTDIR}/_ext/1163846883/BlockQ.o ${OBJECTDIR}/_ext/1163846883/blocktim.o ${OBJECTDIR}/_ext/1163846883/integer.o ${OBJECTDIR}/_ext/1472/main.o ${OBJECTDIR}/_ext/1445226593/Error.o
 
 # Source Files
-SOURCEFILES=../../App/ParTest/ParTest.c ../../App/serial/serial.c ../../App/CAT24C512.c ../../App/CheckData.c ../../App/Common.c ../../App/PC.c ../../App/PCF8583.c ../../App/SerialBuffer.c ../WCGDebug.c ../../BSP/timertest.c ../../BSP/Debug.c ../../BSP/I2C_S.c ../../BSP/INT.c ../../BSP/LCD.c ../../BSP/PPS.c ../../BSP/RS485.c ../../BSP/Sleep.c ../../BSP/TIM.c ../../BSP/UART2.c ../../BSP/UART3.c ../../../Source/portable/MPLAB/PIC24_dsPIC/port.c ../../../Source/portable/MPLAB/PIC24_dsPIC/portasm_PIC24.S ../../../Source/tasks.c ../../../Source/portable/MemMang/heap_4.c ../../../Source/list.c ../../../Source/queue.c ../../Common/Minimal/BlockQ.c ../../Common/Minimal/blocktim.c ../../Common/Minimal/comtest.c ../../Common/Minimal/integer.c ../main.c
+SOURCEFILES=../../App/CAT24C512.c ../../App/CheckData.c ../../App/Common.c ../../App/PCF8583.c ../WCGDebug.c ../../App/KEY.c ../../App/LED.c ../../BSP/Debug.c ../../BSP/I2C_S.c ../../BSP/INT.c ../../BSP/LCD.c ../../BSP/Sleep.c ../../BSP/TIM.c ../../BSP/UART2.c ../../BSP/UART3.c ../../BSP/UART1.c ../../../Source/portable/MPLAB/PIC24_dsPIC/port.c ../../../Source/portable/MPLAB/PIC24_dsPIC/portasm_PIC24.S ../../../Source/tasks.c ../../../Source/portable/MemMang/heap_4.c ../../../Source/list.c ../../../Source/queue.c ../../../Source/event_groups.c ../../Common/Minimal/BlockQ.c ../../Common/Minimal/blocktim.c ../../Common/Minimal/integer.c ../main.c ../../App/Error.c
 
 
 CFLAGS=
@@ -94,20 +94,6 @@ MP_LINKER_FILE_OPTION=,--script="../p24FJ64GA306.gld"
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/862485765/ParTest.o: ../../App/ParTest/ParTest.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/862485765" 
-	@${RM} ${OBJECTDIR}/_ext/862485765/ParTest.o.d 
-	@${RM} ${OBJECTDIR}/_ext/862485765/ParTest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/ParTest/ParTest.c  -o ${OBJECTDIR}/_ext/862485765/ParTest.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/862485765/ParTest.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/862485765/ParTest.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1875937438/serial.o: ../../App/serial/serial.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1875937438" 
-	@${RM} ${OBJECTDIR}/_ext/1875937438/serial.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1875937438/serial.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/serial/serial.c  -o ${OBJECTDIR}/_ext/1875937438/serial.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1875937438/serial.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1875937438/serial.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1445226593/CAT24C512.o: ../../App/CAT24C512.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
 	@${RM} ${OBJECTDIR}/_ext/1445226593/CAT24C512.o.d 
@@ -129,26 +115,12 @@ ${OBJECTDIR}/_ext/1445226593/Common.o: ../../App/Common.c  nbproject/Makefile-${
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/Common.c  -o ${OBJECTDIR}/_ext/1445226593/Common.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/Common.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/Common.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1445226593/PC.o: ../../App/PC.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/PC.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/PC.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/PC.c  -o ${OBJECTDIR}/_ext/1445226593/PC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/PC.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/PC.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1445226593/PCF8583.o: ../../App/PCF8583.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
 	@${RM} ${OBJECTDIR}/_ext/1445226593/PCF8583.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1445226593/PCF8583.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/PCF8583.c  -o ${OBJECTDIR}/_ext/1445226593/PCF8583.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/PCF8583.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/PCF8583.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1445226593/SerialBuffer.o: ../../App/SerialBuffer.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/SerialBuffer.c  -o ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/SerialBuffer.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/SerialBuffer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1472/WCGDebug.o: ../WCGDebug.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
@@ -157,12 +129,19 @@ ${OBJECTDIR}/_ext/1472/WCGDebug.o: ../WCGDebug.c  nbproject/Makefile-${CND_CONF}
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../WCGDebug.c  -o ${OBJECTDIR}/_ext/1472/WCGDebug.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/WCGDebug.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/WCGDebug.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1445226623/timertest.o: ../../BSP/timertest.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/timertest.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/timertest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/timertest.c  -o ${OBJECTDIR}/_ext/1445226623/timertest.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/timertest.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/timertest.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+${OBJECTDIR}/_ext/1445226593/KEY.o: ../../App/KEY.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/KEY.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/KEY.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/KEY.c  -o ${OBJECTDIR}/_ext/1445226593/KEY.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/KEY.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/KEY.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1445226593/LED.o: ../../App/LED.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/LED.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/LED.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/LED.c  -o ${OBJECTDIR}/_ext/1445226593/LED.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/LED.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/LED.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1445226623/Debug.o: ../../BSP/Debug.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
@@ -192,20 +171,6 @@ ${OBJECTDIR}/_ext/1445226623/LCD.o: ../../BSP/LCD.c  nbproject/Makefile-${CND_CO
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/LCD.c  -o ${OBJECTDIR}/_ext/1445226623/LCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/LCD.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/LCD.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1445226623/PPS.o: ../../BSP/PPS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/PPS.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/PPS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/PPS.c  -o ${OBJECTDIR}/_ext/1445226623/PPS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/PPS.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/PPS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1445226623/RS485.o: ../../BSP/RS485.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/RS485.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/RS485.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/RS485.c  -o ${OBJECTDIR}/_ext/1445226623/RS485.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/RS485.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/RS485.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1445226623/Sleep.o: ../../BSP/Sleep.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
 	@${RM} ${OBJECTDIR}/_ext/1445226623/Sleep.o.d 
@@ -233,6 +198,13 @@ ${OBJECTDIR}/_ext/1445226623/UART3.o: ../../BSP/UART3.c  nbproject/Makefile-${CN
 	@${RM} ${OBJECTDIR}/_ext/1445226623/UART3.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/UART3.c  -o ${OBJECTDIR}/_ext/1445226623/UART3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/UART3.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/UART3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1445226623/UART1.o: ../../BSP/UART1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
+	@${RM} ${OBJECTDIR}/_ext/1445226623/UART1.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226623/UART1.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/UART1.c  -o ${OBJECTDIR}/_ext/1445226623/UART1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/UART1.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/UART1.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1343266892/port.o: ../../../Source/portable/MPLAB/PIC24_dsPIC/port.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1343266892" 
@@ -269,6 +241,13 @@ ${OBJECTDIR}/_ext/449926602/queue.o: ../../../Source/queue.c  nbproject/Makefile
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Source/queue.c  -o ${OBJECTDIR}/_ext/449926602/queue.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/449926602/queue.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/449926602/queue.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/449926602/event_groups.o: ../../../Source/event_groups.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/449926602" 
+	@${RM} ${OBJECTDIR}/_ext/449926602/event_groups.o.d 
+	@${RM} ${OBJECTDIR}/_ext/449926602/event_groups.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Source/event_groups.c  -o ${OBJECTDIR}/_ext/449926602/event_groups.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/449926602/event_groups.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/449926602/event_groups.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/_ext/1163846883/BlockQ.o: ../../Common/Minimal/BlockQ.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1163846883" 
 	@${RM} ${OBJECTDIR}/_ext/1163846883/BlockQ.o.d 
@@ -282,13 +261,6 @@ ${OBJECTDIR}/_ext/1163846883/blocktim.o: ../../Common/Minimal/blocktim.c  nbproj
 	@${RM} ${OBJECTDIR}/_ext/1163846883/blocktim.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../Common/Minimal/blocktim.c  -o ${OBJECTDIR}/_ext/1163846883/blocktim.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1163846883/blocktim.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1163846883/blocktim.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1163846883/comtest.o: ../../Common/Minimal/comtest.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1163846883" 
-	@${RM} ${OBJECTDIR}/_ext/1163846883/comtest.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1163846883/comtest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../Common/Minimal/comtest.c  -o ${OBJECTDIR}/_ext/1163846883/comtest.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1163846883/comtest.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1163846883/comtest.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1163846883/integer.o: ../../Common/Minimal/integer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1163846883" 
@@ -304,21 +276,14 @@ ${OBJECTDIR}/_ext/1472/main.o: ../main.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../main.c  -o ${OBJECTDIR}/_ext/1472/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/main.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/1445226593/Error.o: ../../App/Error.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/Error.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/Error.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/Error.c  -o ${OBJECTDIR}/_ext/1445226593/Error.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/Error.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/Error.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
-${OBJECTDIR}/_ext/862485765/ParTest.o: ../../App/ParTest/ParTest.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/862485765" 
-	@${RM} ${OBJECTDIR}/_ext/862485765/ParTest.o.d 
-	@${RM} ${OBJECTDIR}/_ext/862485765/ParTest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/ParTest/ParTest.c  -o ${OBJECTDIR}/_ext/862485765/ParTest.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/862485765/ParTest.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/862485765/ParTest.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1875937438/serial.o: ../../App/serial/serial.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1875937438" 
-	@${RM} ${OBJECTDIR}/_ext/1875937438/serial.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1875937438/serial.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/serial/serial.c  -o ${OBJECTDIR}/_ext/1875937438/serial.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1875937438/serial.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1875937438/serial.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1445226593/CAT24C512.o: ../../App/CAT24C512.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
 	@${RM} ${OBJECTDIR}/_ext/1445226593/CAT24C512.o.d 
@@ -340,26 +305,12 @@ ${OBJECTDIR}/_ext/1445226593/Common.o: ../../App/Common.c  nbproject/Makefile-${
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/Common.c  -o ${OBJECTDIR}/_ext/1445226593/Common.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/Common.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/Common.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1445226593/PC.o: ../../App/PC.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/PC.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/PC.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/PC.c  -o ${OBJECTDIR}/_ext/1445226593/PC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/PC.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/PC.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1445226593/PCF8583.o: ../../App/PCF8583.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
 	@${RM} ${OBJECTDIR}/_ext/1445226593/PCF8583.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1445226593/PCF8583.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/PCF8583.c  -o ${OBJECTDIR}/_ext/1445226593/PCF8583.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/PCF8583.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/PCF8583.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1445226593/SerialBuffer.o: ../../App/SerialBuffer.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/SerialBuffer.c  -o ${OBJECTDIR}/_ext/1445226593/SerialBuffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/SerialBuffer.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/SerialBuffer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1472/WCGDebug.o: ../WCGDebug.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
@@ -368,12 +319,19 @@ ${OBJECTDIR}/_ext/1472/WCGDebug.o: ../WCGDebug.c  nbproject/Makefile-${CND_CONF}
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../WCGDebug.c  -o ${OBJECTDIR}/_ext/1472/WCGDebug.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/WCGDebug.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/WCGDebug.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1445226623/timertest.o: ../../BSP/timertest.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/timertest.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/timertest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/timertest.c  -o ${OBJECTDIR}/_ext/1445226623/timertest.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/timertest.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/timertest.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+${OBJECTDIR}/_ext/1445226593/KEY.o: ../../App/KEY.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/KEY.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/KEY.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/KEY.c  -o ${OBJECTDIR}/_ext/1445226593/KEY.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/KEY.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/KEY.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1445226593/LED.o: ../../App/LED.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/LED.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/LED.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/LED.c  -o ${OBJECTDIR}/_ext/1445226593/LED.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/LED.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/LED.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1445226623/Debug.o: ../../BSP/Debug.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
@@ -403,20 +361,6 @@ ${OBJECTDIR}/_ext/1445226623/LCD.o: ../../BSP/LCD.c  nbproject/Makefile-${CND_CO
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/LCD.c  -o ${OBJECTDIR}/_ext/1445226623/LCD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/LCD.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/LCD.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1445226623/PPS.o: ../../BSP/PPS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/PPS.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/PPS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/PPS.c  -o ${OBJECTDIR}/_ext/1445226623/PPS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/PPS.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/PPS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1445226623/RS485.o: ../../BSP/RS485.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/RS485.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1445226623/RS485.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/RS485.c  -o ${OBJECTDIR}/_ext/1445226623/RS485.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/RS485.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/RS485.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1445226623/Sleep.o: ../../BSP/Sleep.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
 	@${RM} ${OBJECTDIR}/_ext/1445226623/Sleep.o.d 
@@ -444,6 +388,13 @@ ${OBJECTDIR}/_ext/1445226623/UART3.o: ../../BSP/UART3.c  nbproject/Makefile-${CN
 	@${RM} ${OBJECTDIR}/_ext/1445226623/UART3.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/UART3.c  -o ${OBJECTDIR}/_ext/1445226623/UART3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/UART3.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/UART3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1445226623/UART1.o: ../../BSP/UART1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226623" 
+	@${RM} ${OBJECTDIR}/_ext/1445226623/UART1.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226623/UART1.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../BSP/UART1.c  -o ${OBJECTDIR}/_ext/1445226623/UART1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226623/UART1.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226623/UART1.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1343266892/port.o: ../../../Source/portable/MPLAB/PIC24_dsPIC/port.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1343266892" 
@@ -480,6 +431,13 @@ ${OBJECTDIR}/_ext/449926602/queue.o: ../../../Source/queue.c  nbproject/Makefile
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Source/queue.c  -o ${OBJECTDIR}/_ext/449926602/queue.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/449926602/queue.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/449926602/queue.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/449926602/event_groups.o: ../../../Source/event_groups.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/449926602" 
+	@${RM} ${OBJECTDIR}/_ext/449926602/event_groups.o.d 
+	@${RM} ${OBJECTDIR}/_ext/449926602/event_groups.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Source/event_groups.c  -o ${OBJECTDIR}/_ext/449926602/event_groups.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/449926602/event_groups.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/449926602/event_groups.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/_ext/1163846883/BlockQ.o: ../../Common/Minimal/BlockQ.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1163846883" 
 	@${RM} ${OBJECTDIR}/_ext/1163846883/BlockQ.o.d 
@@ -494,13 +452,6 @@ ${OBJECTDIR}/_ext/1163846883/blocktim.o: ../../Common/Minimal/blocktim.c  nbproj
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../Common/Minimal/blocktim.c  -o ${OBJECTDIR}/_ext/1163846883/blocktim.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1163846883/blocktim.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1163846883/blocktim.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1163846883/comtest.o: ../../Common/Minimal/comtest.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1163846883" 
-	@${RM} ${OBJECTDIR}/_ext/1163846883/comtest.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1163846883/comtest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../Common/Minimal/comtest.c  -o ${OBJECTDIR}/_ext/1163846883/comtest.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1163846883/comtest.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1163846883/comtest.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1163846883/integer.o: ../../Common/Minimal/integer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1163846883" 
 	@${RM} ${OBJECTDIR}/_ext/1163846883/integer.o.d 
@@ -514,6 +465,13 @@ ${OBJECTDIR}/_ext/1472/main.o: ../main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/_ext/1472/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../main.c  -o ${OBJECTDIR}/_ext/1472/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/main.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1445226593/Error.o: ../../App/Error.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1445226593" 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/Error.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1445226593/Error.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../App/Error.c  -o ${OBJECTDIR}/_ext/1445226593/Error.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1445226593/Error.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-code -O0 -I".." -I"../../../../../Demo/PIC24_MPLAB" -I"../../../../Demo/PIC24_MPLAB" -I"../../../../Source/include" -I"../../../../include" -I"../../../Common/include" -I"../../../Source/include" -I"../../../include" -I"../../Common/include" -I"../../Demo/PIC24_MPLAB" -I"../../include" -I"../FileSystem" -I"../include" -I"." -I"../../App" -I"../../BSP" -DMPLAB_PIC24_PORT -msmart-io=1 -Wall -msfr-warn=off   -fno-schedule-insns -fno-schedule-insns2
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1445226593/Error.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 
