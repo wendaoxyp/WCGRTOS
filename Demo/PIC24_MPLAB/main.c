@@ -134,6 +134,7 @@
 #include "CheckData.h"
 #include "Error.h"
 #include "DW02.h"
+#include "WCGArg.h"
 
 /* Demo task priorities. */
 #define mainBLOCK_Q_PRIORITY				( tskIDLE_PRIORITY + 2 )
@@ -362,12 +363,16 @@ void vLEDShark1(void *pvParameters) {
 //}
 extern void vTaskKey(void *parameter);
 extern void vTaskGetPressure(void* parameter);
+extern void vTaskHandleLCD(void *parameter);
 
 void task_start(void *parameter) {
-    vLCDInit();
+
     //    UART3_Init();
-    xTaskCreate(vTaskGetPressure, "vTaskGetPressure", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL);
-    xTaskCreate(vTaskKey, "led456", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY - 1, NULL);
+    //    xTaskCreate(vTaskGetPressure, "vTaskGetPressure", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL);
+
+    //    xTaskCreate(vTaskKey, "led456", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY - 1, NULL);
+
+    xTaskCreate(vTaskHandleLCD, "led456", mainCHECK_TAKS_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY - 1, NULL);
     /*Get EEPROM Write Point Count*/
     //    xCAT24ReadPointCount(CAT24_PC);
     vTaskDelete(NULL);
@@ -502,23 +507,23 @@ void vTaskSendByGPRS(void*parameter) {
     }
 }
 
-void vTaskKey(void *parameter) {
-    unsigned char ucKeyState;
-    /*create semaphore*/
-    xSemBinKey = xSemaphoreCreateBinary();
-    /*Init key*/
-    vKeyInit();
-    vLEDInit();
-    for (;;) {
-        if (xSemaphoreTake(xSemBinKey, portMAX_DELAY) == pdTRUE) {
-            //            vKeyScan(&ucKeyState);
-            //            vTaskDelay(10);
-            //            vKeyUserFunction(ucKeyState);
-            vUART1Send((unsigned char*) TR04, sizeof (TR04));
-            vLEDShark(LEDGreen, 300, 100, 3);
-        }
-    }
-}
+//void vTaskKey(void *parameter) {
+//    unsigned char ucKeyState;
+//    /*create semaphore*/
+//    xSemBinKey = xSemaphoreCreateBinary();
+//    /*Init key*/
+//    vKeyInit();
+//    vLEDInit();
+//    for (;;) {
+//        if (xSemaphoreTake(xSemBinKey, portMAX_DELAY) == pdTRUE) {
+//            //            vKeyScan(&ucKeyState);
+//            //            vTaskDelay(10);
+//            //            vKeyUserFunction(ucKeyState);
+//            vUART1Send((unsigned char*) TR04, sizeof (TR04));
+//            vLEDShark(LEDGreen, 300, 100, 3);
+//        }
+//    }
+//}
 
 void vTaskUserCommunication(void *parameter) {
     xQueueUart3User = xQueueCreate(1, UART3_BUFFER_LENGTH);
@@ -534,20 +539,41 @@ void vTaskShowLCD(void *parameter) {
     }
 }
 
-void vTaskCalaClockTime(void *parameter) {
-
-    for (;;) {
+void vTaskHandleLCD(void* parameter) {
+    unsigned char ucKeyState;
+    //    unsigned char ucScreenID;
+    vLCDInit();
+    vKeyInit();
+    /*create semaphore*/
+    //    xSemBinKey = xSemaphoreCreateBinary();
+    while (1) {
+        if (xSemaphoreTake(xSemBinKey, portMAX_DELAY) == pdTRUE) {
+            /*get key state*/
+            vKeyScan(&ucKeyState);
+            vTaskDelay(10);
+            vKeyUserFunction(ucKeyState, &sLCDArg.ucScreenID);
+            //            vUART1Send((unsigned char*) TR04, sizeof (TR04));
+            //            vLEDShark(LEDGreen, 300, 100, 3);
+            //        }
+            vArgShowInLCD(&sLCDArg.ucScreenID);
+        }
     }
 }
 
-void vTaskStorageSample(void *parameter) {
-    for (;;) {
-        /*packet data in eeprom*/
-        //            xCAT24WriteBytes(CAT24_PC, Data, length);
-        //            CAT24_PC += length;            
-        //            xCAT24WritePointCount(CAT24_PC );
-    }
-}
+//void vTaskCalaClockTime(void *parameter) {
+//    
+//    for (;;) {
+//    }
+//}
+
+//void vTaskStorageSample(void *parameter) {
+//    for (;;) {
+//        /*packet data in eeprom*/
+//        //            xCAT24WriteBytes(CAT24_PC, Data, length);
+//        //            CAT24_PC += length;            
+//        //            xCAT24WritePointCount(CAT24_PC );
+//    }
+//}
 
 
 

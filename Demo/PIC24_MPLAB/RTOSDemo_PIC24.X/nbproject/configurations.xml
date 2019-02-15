@@ -30,6 +30,7 @@
         <itemPath>../../App/KEY.c</itemPath>
         <itemPath>../../App/LED.c</itemPath>
         <itemPath>../../App/Error.c</itemPath>
+        <itemPath>../../App/WCGArg.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="BSP" projectFiles="true">
         <itemPath>../../BSP/timertest.c</itemPath>
@@ -490,6 +491,16 @@
         </C30Global>
       </item>
       <item path="../../BSP/timertest.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="../../Common/Minimal/comtest.c" ex="true" overriding="false">
         <C30>

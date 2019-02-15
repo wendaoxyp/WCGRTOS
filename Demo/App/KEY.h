@@ -51,5 +51,5 @@ extern void vKeyInit(void);
 /*É¨Ãè°´¼ü*/
 extern void vKeyScan(void* vKeyState);
 /*keyhandle*/
-extern void vKeyUserFunction(unsigned char ucKeyState);
+extern void vKeyUserFunction(unsigned char ucKeyState,unsigned char*);
 #endif	/* XC_HEADER_TEMPLATE_H */

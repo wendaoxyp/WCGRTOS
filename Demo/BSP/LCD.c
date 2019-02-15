@@ -1,6 +1,7 @@
 #include "LCD.h"
 #include "WCGDeBug.h"
 #include "Common.h"
+#include "WCGArg.h"
 #ifdef DebugLCD
 #include "Debug.h"
 #endif
@@ -17,6 +18,13 @@ const uint8_t LCD_Num34567_Code[7] = {
 };
 /*定义数字偏移量*/
 const uint8_t LCD_NUM_OFFSET[7] = {0, 2, 0, 2, 4, 6, 8};
+
+struct xLCDArg sLCDArg = {
+    {0},
+    {0},
+    0, //MainPage1,
+};
+
 
 /************************************************定义函数*****************************/
 
@@ -280,3 +288,50 @@ void vLCDClearScreen(void) {
             vLCDShowPoint(lcd_x + lcd_y * LCDSEGSIZE, SEGHIDE);
 }
 
+/*************************************
+ * Function: vLCDShowScreen
+ * Description: LCD show Screen
+ * Input: LCDArg
+ * Output: void
+ * notice: use Global varible sLCDArg
+ *************************************/
+
+void vLCDShowScreen(void) {
+    /*clear screen*/
+    vLCDClearScreen();
+    /*show nums*/
+    if (sLCDArg.sLCDArg1.num0 < 0xa)
+        vLCDShowNum(sLCDArg.sLCDArg1.num0, 0);
+    if (sLCDArg.sLCDArg1.num1 < 0xa)
+        vLCDShowNum(sLCDArg.sLCDArg1.num1, 0);
+    if (sLCDArg.sLCDArg1.num2 < 0xa)
+        vLCDShowNum(sLCDArg.sLCDArg1.num2, 0);
+    if (sLCDArg.sLCDArg1.num3 < 0xa)
+        vLCDShowNum(sLCDArg.sLCDArg1.num3, 0);
+    if (sLCDArg.sLCDArg1.num4 < 0xa)
+        vLCDShowNum(sLCDArg.sLCDArg1.num4, 0);
+    if (sLCDArg.sLCDArg1.num5 < 0xa)
+        vLCDShowNum(sLCDArg.sLCDArg1.num5, 0);
+    if (sLCDArg.sLCDArg1.num6 < 0xa)
+        vLCDShowNum(sLCDArg.sLCDArg1.num6, 0);
+    /*show Vb*/
+    vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Vb);
+    /*show Qm*/
+    vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Qm);
+    /*show charge*/
+    vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Charge);
+    /*show error*/
+    vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Error);
+    /*show sign*/
+    vLCDShowGPRSSign(sLCDArg.sLCDArg2.Sign);
+    /*show battery*/
+    vLCDShowGPRSSign(sLCDArg.sLCDArg2.Battery);
+    /*show cc*/
+    vLCDShowPoint(eBackword, sLCDArg.sLCDArg2.CC);
+    /*show m3h*/
+    vLCDShowPoint(eBackword, sLCDArg.sLCDArg2.M3H);
+    /*show Kpa*/
+    vLCDShowPoint(eBackword, sLCDArg.sLCDArg2.KPa);
+    /*show digital point*/
+    vLCDShowDigitalPoint(sLCDArg.sLCDArg2.Point);
+}

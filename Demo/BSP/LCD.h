@@ -61,11 +61,49 @@ enum LCD_truth_table {
 };
 
 
+
+
 /*设置段码的状态*/
 #define FristZeroShow 1
 #define FristZeroHide 0
 #define SEGSHOW 1
 #define SEGHIDE 0
+/*hide 1 bit Nun*/
+#define NUMHIDE 0x0A
+
+union xLCDArg1 {
+    unsigned long num0 : 4;
+    unsigned long num1 : 4;
+    unsigned long num2 : 4;
+    unsigned long num3 : 4;
+    unsigned long num4 : 4;
+    unsigned long num5 : 4;
+    unsigned long num6 : 4; //27   
+    unsigned long Vb : 1; //28
+    unsigned long Qm : 1; //29
+    unsigned long Charge : 1; //30
+    unsigned long Error : 1; //31
+};
+
+union xLCDArg2 {
+    unsigned int Sign : 3; //2
+    unsigned int Battery : 3; //5
+    /*number cursor for set arg*/
+    unsigned int Cursor : 3; //8
+    unsigned int CC : 2; //10
+    unsigned int M3H : 1; //11
+    unsigned int KPa : 1; //12
+    unsigned int Point : 3; //15    
+};
+
+struct xLCDArg {
+    union xLCDArg1 sLCDArg1;
+    union xLCDArg2 sLCDArg2;
+    /*current Screen ID*/
+    unsigned char ucScreenID;
+};
+/*define LCDArg*/
+extern struct xLCDArg sLCDArg;
 
 /*初始化LCD，使用单片机内部LCD驱动*/
 extern void vLCDInit(void);
@@ -85,6 +123,8 @@ extern void vLCDClearNums(void);
 void vLCDShowNums(uint32_t ulNums, bool bFirstZeroshow);
 /*LCD Clear Screen*/
 extern void vLCDClearScreen(void);
+/*LCD Show Screen*/
+extern void vLCDShowScreen(void);
 
 #endif
 

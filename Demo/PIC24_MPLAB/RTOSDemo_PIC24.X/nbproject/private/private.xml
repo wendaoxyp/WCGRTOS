@@ -12,9 +12,11 @@
             <file>file:/home/zxc/Documents/WCGRTOS/Source/tasks.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/BSP/PPS.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/BSP/NVIC.c</file>
+            <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/WCGArg.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/PCF8583.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Source/include/semphr.h</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/LED.c</file>
+            <file>file:/opt/microchip/xc16/v1.32/support/PIC24F/h/p24FJ64GA306.h</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/CAT24C512.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/PIC24_MPLAB/FreeRTOSConfig.h</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/PIC24_MPLAB/WCGDebug.c</file>
@@ -22,6 +24,7 @@
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/BSP/UART3.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/WCGDeBug.h</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/BSP/UART1.c</file>
+            <file>file:/opt/microchip/xc16/v1.32/include/time.h</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/BSP/UART2.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Source/portable/MPLAB/PIC24_dsPIC/port.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/PIC24_MPLAB/main.c</file>
@@ -42,6 +45,7 @@
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/BSP/Debug.h</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/BSP/Debug.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Source/include/task.h</file>
+            <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/WCGArg.h</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/serial/serial.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/Common/Minimal/integer.c</file>
             <file>file:/home/zxc/Documents/WCGRTOS/Demo/App/PC.c</file>

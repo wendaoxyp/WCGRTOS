@@ -133,7 +133,7 @@ struct tm sPCF8583ReadTime(void) {
     /*get month*/
     sReadTime.tm_mon = HCD(ucTmp[PCF_T_MONTH]&0x1F) - 1;
     /*get year 注意是否需要更新年份见2016这个变量放入E2ROM*/
-    sReadTime.tm_year = ucTmp[PCF_T_DAY] >> 6;
+    sReadTime.tm_year = (ucTmp[PCF_T_DAY] >> 6 );
     return sReadTime;
 }
 
