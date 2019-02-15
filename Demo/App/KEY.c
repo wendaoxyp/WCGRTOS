@@ -10,6 +10,8 @@
 #if (UseFreeRTOSInKey == 1)
 #include "FreeRTOS.h"
 #include "semphr.h"
+#include "WCGArg.h"
+#include "LCD.h"
 extern xSemaphoreHandle xSemBinKey;
 #endif
 
@@ -165,41 +167,118 @@ void vKeyScan(void* vKeyState) {
 }
 
 /*************************************
-Function: vKey1LongHandle
-Description: deal witch key by keystate 
-Input: ucKeyState 
+Function: vMainScreenKey2ShortHandle
+Description: 主界面下,切换到下一个界面, use sLCDArg.ucLCDArg3
+Input: void 
 Output: void
  *************************************/
 
-static void vKey1LongHandle(void*parameter) {
-    unsigned char ucLCDNum;
-
-    ucLCDNum = *((unsigned char *) parameter);
-    /*increase*/
-    ucLCDNum++;
-    /*mod*/
-    ucLCDNum %= 10;
-    /*return parameter*/
-    *((unsigned char *) parameter) = ucLCDNum;
+static void vMainScreenKey2ShortHandle(void) {
+    /*page +1*/
+    sLCDArg.ucScreenID += 1;
+    /*overflow handle*/
+    if (sLCDArg.ucScreenID >= MaxScreenPage)
+        sLCDArg.ucScreenID = 0;
 }
 
 /*************************************
-Function: vKey1ShortHandle
+Function: vMainScreenKey3LongHandle
+Description: 主界面下,切换到下一个界面, use sLCDArg.ucLCDArg3
+Input: void 
+Output: void
+ *************************************/
+
+static void vMainScreenKey3LongHandle(void) {
+    /*page set password*/
+    sLCDArg.ucScreenID = ePasswordPage;
+}
+
+/*************************************
+Function: vSetScreenShortKey1Handle
+Description: 数字加一
+Input: ucKeyState 
+Output: void
+ *************************************/
+
+static void vSetScreenShortKey1Handle(void) {
+    /*select set number*/
+    switch (sLCDArg.sLCDArg2.Cursor) {
+        case 0:
+        {
+            sLCDArg.sLCDArg1.num0 += 1;
+            /*overflow handle*/
+            if (sLCDArg.sLCDArg1.num0 > 9)
+                sLCDArg.sLCDArg1.num0 = 0;
+            break;
+        }
+        case 1:
+        {
+            sLCDArg.sLCDArg1.num1 += 1;
+            /*overflow handle*/
+            if (sLCDArg.sLCDArg1.num1 > 9)
+                sLCDArg.sLCDArg1.num1 = 0;
+            break;
+        }
+        case 2:
+        {
+            sLCDArg.sLCDArg1.num2 += 1;
+            /*overflow handle*/
+            if (sLCDArg.sLCDArg1.num2 > 9)
+                sLCDArg.sLCDArg1.num2 = 0;
+            break;
+        }
+        case 3:
+        {
+            sLCDArg.sLCDArg1.num3 += 1;
+            /*overflow handle*/
+            if (sLCDArg.sLCDArg1.num3 > 9)
+                sLCDArg.sLCDArg1.num3 = 0;
+            break;
+        }
+        case 4:
+        {
+            sLCDArg.sLCDArg1.num4 += 1;
+            /*overflow handle*/
+            if (sLCDArg.sLCDArg1.num4 > 9)
+                sLCDArg.sLCDArg1.num4 = 0;
+            break;
+        }
+        case 5:
+        {
+            sLCDArg.sLCDArg1.num5 += 1;
+            /*overflow handle*/
+            if (sLCDArg.sLCDArg1.num5 > 9)
+                sLCDArg.sLCDArg1.num5 = 0;
+            break;
+        }
+        case 6:
+        {
+            sLCDArg.sLCDArg1.num6 += 1;
+            /*overflow handle*/
+            if (sLCDArg.sLCDArg1.num6 > 9)
+                sLCDArg.sLCDArg1.num6 = 0;
+            break;
+        }
+    }
+}
+
+/*************************************
+Function: vSetScreenLongKey2Handle
 Description: deal witch key by keystate 
 Input: ucKeyState 
 Output: void
  *************************************/
 
-static void vKey1ShortHandle(void*parameter) {
-    unsigned char ucLCDNum;
+static void vSetScreenLongKey2Handle(void) {
+    //    unsigned char ucLCDNum;
 
-    ucLCDNum = *((unsigned char *) parameter);
+    //    ucLCDNum = *((unsigned char *) parameter);
     /*increase*/
-    ucLCDNum++;
+    //    ucLCDNum++;
     /*mod*/
-    ucLCDNum %= 10;
-    /*return parameter*/
-    *((unsigned char *) parameter) = ucLCDNum;
+    //    ucLCDNum %= 10;
+    //    /*return parameter*/
+    //    *((unsigned char *) parameter) = ucLCDNum;
 }
 
 /*************************************
@@ -208,37 +287,79 @@ Description: deal witch key by keystate
 Input: ucKeyState 
 Output: void
  *************************************/
-void vKeyUserFunction(unsigned char ucKeyState) {
-    unsigned char ucNum;
-    /*switch key function*/
-    switch (ucKeyState) {
-        case 0xC1://LongKEY1
+void vKeyUserFunction(unsigned char ucKeyState, unsigned char* pcuScreenID) {
+
+    switch (*pcuScreenID) {
+        case eMainPage1:
+        case eMainPage2:
+        case eMainPage3:
         {
-            vKey1LongHandle(&ucNum);
+            /*switch key function*/
+            switch (ucKeyState) {
+                case 0xC1://LongKEY1 +              
+                case 0x41://ShortKEY1 +
+                case 0xC2://LongKEY2 >
+                case 0x44://ShortKEY3 OK
+                {
+                    /*无动作*/
+                    Nop();
+                    break;
+                }
+                case 0x42://ShortKEY2 >
+                {
+                    vMainScreenKey2ShortHandle();
+                    break;
+                }
+                case 0xC4://LongKEY3 OK
+                {
+                    vMainScreenKey3LongHandle();
+                    break;
+                }
+            }
             break;
         }
-        case 0x41://ShortKEY1
+        case ePasswordPage:
+        case eSetPage1:
+        case eSetPage2:
+        case eSetPage3:
+        case eSetPage4:
+        case eSetPage5:
+        case eSetPage6:
+        case eSetPage7:
+        case eSetPage8:
+        case eSetPage9:
         {
-            vKey1ShortHandle(&ucNum);
-            break;
-        }
-        case 0xC2://LongKEY2
-        {
-            break;
-        }
-        case 0x42://ShortKEY2
-        {
-            break;
-        }
-        case 0xC4://LongKEY2
-        {
-            break;
-        }
-        case 0x44://ShortKEY2
-        {
+            switch (ucKeyState) {
+                case 0xC1://LongKEY1
+                case 0xC4://LongKEY3
+                {
+                    /*无动作*/
+                    Nop();
+                    break;
+                }
+                case 0x41://ShortKEY1
+                {
+                    vSetScreenShortKey1Handle();
+                    break;
+                }
+                case 0xC2://LongKEY2
+                {
+                    vSetScreenLongKey2Handle();
+                    break;
+                }
+                case 0x42://ShortKEY2
+                {
+                    break;
+                }
+                case 0x44://ShortKEY3
+                {
+                    break;
+                }
+            }
             break;
         }
     }
+    //return ucScreeID;
 }
 
 
