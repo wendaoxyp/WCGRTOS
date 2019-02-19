@@ -50,6 +50,7 @@ void vLCDInit(void) {
     LCDREFbits.LCDCST = 0;
     /*use four common pin*/
     LCDCON = 0x800B;
+
 }
 
 /*************************************
@@ -314,6 +315,10 @@ void vLCDShowScreen(void) {
         vLCDShowNum(sLCDArg.sLCDArg1.num5, 0);
     if (sLCDArg.sLCDArg1.num6 < 0xa)
         vLCDShowNum(sLCDArg.sLCDArg1.num6, 0);
+    if (sLCDArg.ucScreenID > MaxScreenPage)
+        sLCDArg.ucScreenID = eMainPage1;
+    /*close cursor*/
+    sLCDArg.sLCDArg2.Cursor = 0;
     /*show Vb*/
     vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Vb);
     /*show Qm*/
