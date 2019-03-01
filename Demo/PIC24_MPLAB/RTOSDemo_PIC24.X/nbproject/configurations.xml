@@ -19,7 +19,6 @@
         <itemPath>../../App/Common.c</itemPath>
         <itemPath>../../App/E41.c</itemPath>
         <itemPath>../../App/HL6528.c</itemPath>
-        <itemPath>../../App/KJProtocol.c</itemPath>
         <itemPath>../../App/PC.c</itemPath>
         <itemPath>../../App/PCF8583.c</itemPath>
         <itemPath>../../App/SerialBuffer.c</itemPath>
@@ -31,6 +30,8 @@
         <itemPath>../../App/LED.c</itemPath>
         <itemPath>../../App/Error.c</itemPath>
         <itemPath>../../App/WCGArg.c</itemPath>
+        <itemPath>../../App/GPRSProtocol.c</itemPath>
+        <itemPath>../../App/DW02.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="BSP" projectFiles="true">
         <itemPath>../../BSP/timertest.c</itemPath>
@@ -102,7 +103,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>pk4hybrid</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.32</languageToolchainVersion>
+        <languageToolchainVersion>1.35</languageToolchainVersion>
         <platform>2</platform>
       </toolsSet>
       <packs>
@@ -170,7 +171,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../App/HL6528.c" ex="true" overriding="false">
+      <item path="../../App/GPRSProtocol.c" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -182,7 +183,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../App/KJProtocol.c" ex="true" overriding="false">
+      <item path="../../App/HL6528.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -351,6 +352,30 @@
         </C30Global>
       </item>
       <item path="../../BSP/RTCC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="../../BSP/Sleep.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="../../BSP/TIM.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>

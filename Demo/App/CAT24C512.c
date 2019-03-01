@@ -28,6 +28,7 @@ Function: xCAT24WritePage
 Description: 向CAT24，页写
 Input: 填充数据的地址add，写入的数据data指针，数据长度bytes,operation(write or read)
 Output: 操作CAT24的状态CAT24_STA
+Notice: ensure 8bit write,max wirte bytes is 128
  *************************************/
 CAT24_STA xCAT24WriteReadPage(const unsigned int usRegisterAddress,
         unsigned char* pucFirstByteAddress,

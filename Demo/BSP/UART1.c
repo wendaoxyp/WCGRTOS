@@ -21,7 +21,7 @@ static uint8_t ucUart1BufferRptr = 0;
 #endif
 
 /*set uart1 interrupt expect byte,determind receive protocal size,like 01 03 04 3E F4 00 00 B6 29*/
-static uint8_t ucUART1InterruptExpectByte = 9;
+//static uint8_t ucUART1InterruptExpectByte = 9;
 
 /*************************************
 Function: vUART1Init

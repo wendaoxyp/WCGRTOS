@@ -38,7 +38,7 @@ Description: 浮点数转化为char数组
 Input: 输入浮点数 模式：4 单精度浮点数 8 双精度浮点数 
 Output: 输出数值
  *************************************/
-void DoubleToChar(long double *d, uint8_t *ch) {
+void DoubleToChar(double *d, uint8_t *ch) {
     uint8_t count;
     void * pf;
     pf = d;

@@ -52,8 +52,8 @@
 #define PCF_A_HOUR              0x0C    //设置报警器的时
 #define PCF_A_DAY               0x0D    //设置报警器的天
 #define PCF_A_MONTH             0x0E    //设置报警器的月
-#define PCF_INIT_VALUE          0b11001100 //read date and month count directly
-#define PCF_START_VALUE         0b00001100
+#define PCF_INIT_VALUE          0b11000100 //read date and month count directly
+#define PCF_START_VALUE         0b00000100
 #define PCF_ALARM_VALUE         0b10010000
 #define PCF_D0_STOP_COUNT       (1<<7)
 #define PCF_D0_HOLD_LAST_COUNT  (1<<6)
@@ -71,15 +71,15 @@
 extern volatile time_t tNowTimestamp;
 
 /*PCF8583 Initialization*/
-extern void vPCF8583Init(void);
+extern void vPCF8583Init(unsigned char*);
 /*set time by struct tm*/
 extern void vPCF8583SetTime(struct tm);
 /*set time by timestamp*/
 extern void vPCF8583SetTimeByTimestamp(time_t* ultimestamp);
 /*read timestamp type of struct tm*/
-extern struct tm sPCF8583ReadTime(void);
+extern struct tm sPCF8583ReadTime(unsigned int*);
 /*read timestamp type of time_t*/
-extern time_t tPCF8583ReadTime(void);
+extern time_t tPCF8583ReadTime(unsigned int*);
 /*set alarm time*/
 extern void vPCF8583SetAlarmTime(struct tm alarmtime);
 /*set register*/

@@ -15,7 +15,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "Common.h"
-#include "UART3.h"
+#include "UART3.h"//19200
 
 //#define Debug_SampleTest         //定义采样测试 缓冲区
 //#define DeBug_PrintsInfo         //定义打印调试消息
@@ -32,8 +32,8 @@
 /***************************************************************************
  * Prototype
  ***************************************************************************/
-extern void vDeBugPrintString(void *strings, uint8_t bytes);
 extern void vDeBugPrintInformation(void *strings);
 extern void vDeBugPrintStringAndNums(void *strings, uint16_t nums);
+extern void vDeBugPrintHexNums(void *pvStrings, uint8_t* pucNums, unsigned char ucBytes);
 #endif	/* DEBUG_H */
 

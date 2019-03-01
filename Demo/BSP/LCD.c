@@ -23,6 +23,7 @@ struct xLCDArg sLCDArg = {
     {0},
     {0},
     0, //MainPage1,
+    5000, //5s refresh
 };
 
 
@@ -227,28 +228,28 @@ void vLCDShowDigitalPoint(uint8_t ucPosition) {
  * notice: 
  *************************************/
 
-void vLCDShowNums(uint32_t ulNums, bool bFirstZeroshow) {
-    char cCnt; //
-    uint8_t ucNumTmep;
-    bool bIsFindHead = false;
-
-    vLCDClearNums();
-    /*if ulNums equal zero , LCD show "0"*/
-    if (ulNums > 9999999L)
-        ulNums = 9999999L;
-    /*获取数字位数*/
-    for (cCnt = 6; cCnt >= 0; cCnt--) {
-        ucNumTmep = (unsigned char) ((unsigned long) (ulNums / pow(10, cCnt)) % 10);
-        /*find first*/
-        if (ucNumTmep&&!bIsFindHead) {
-            bIsFindHead = true;
-        }
-        /*all show|| first not zero num finded || only zero*/
-        if (bFirstZeroshow || bIsFindHead || ((!cCnt)&&(!ucNumTmep))) {
-            vLCDShowNum(ucNumTmep, cCnt);
-        }
-    }
-}
+//void vLCDShowNums(uint32_t ulNums, bool bFirstZeroshow) {
+//    char cCnt; //
+//    uint8_t ucNumTmep;
+//    bool bIsFindHead = false;
+//
+//    vLCDClearNums();
+//    /*if ulNums equal zero , LCD show "0"*/
+//    if (ulNums > 9999999L)
+//        ulNums = 9999999L;
+//    /*获取数字位数*/
+//    for (cCnt = 6; cCnt >= 0; cCnt--) {
+//        ucNumTmep = (unsigned char) ((unsigned long) (ulNums / pow(10, cCnt)) % 10);
+//        /*find first*/
+//        if (ucNumTmep&&!bIsFindHead) {
+//            bIsFindHead = true;
+//        }
+//        /*all show|| first not zero num finded || only zero*/
+//        if (bFirstZeroshow || bIsFindHead || ((!cCnt)&&(!ucNumTmep))) {
+//            vLCDShowNum(ucNumTmep, cCnt);
+//        }
+//    }
+//}
 
 /*************************************
  * Function: vLCDClearNums
@@ -289,6 +290,27 @@ void vLCDClearScreen(void) {
 }
 
 /*************************************
+ * Function: vShowNum
+ * Description: LCD show NUM maybe need shark
+ * Input: LCDArg
+ * Output: void
+ * notice: use Global varible sLCDArg
+ *************************************/
+static void vShowNum(unsigned char ucCursorPosition, unsigned char ucNum) {
+    static unsigned char ucCount = 0;
+    if (sLCDArg.sLCDArg2.Cursor == ucCursorPosition) {
+        ucCount++;
+        ucCount &= 0x01;
+        if (ucCount)
+            vLCDShowNum(ucNum, ucCursorPosition);
+    } else {
+        if (ucNum < NUMHIDE) {
+            vLCDShowNum(ucNum, ucCursorPosition);
+        }
+    }
+}
+
+/*************************************
  * Function: vLCDShowScreen
  * Description: LCD show Screen
  * Input: LCDArg
@@ -297,41 +319,35 @@ void vLCDClearScreen(void) {
  *************************************/
 
 void vLCDShowScreen(void) {
+
     /*clear screen*/
     vLCDClearScreen();
     /*show nums*/
-    if (sLCDArg.sLCDArg1.num0 < 0xa)
-        vLCDShowNum(sLCDArg.sLCDArg1.num0, 0);
-    if (sLCDArg.sLCDArg1.num1 < 0xa)
-        vLCDShowNum(sLCDArg.sLCDArg1.num1, 0);
-    if (sLCDArg.sLCDArg1.num2 < 0xa)
-        vLCDShowNum(sLCDArg.sLCDArg1.num2, 0);
-    if (sLCDArg.sLCDArg1.num3 < 0xa)
-        vLCDShowNum(sLCDArg.sLCDArg1.num3, 0);
-    if (sLCDArg.sLCDArg1.num4 < 0xa)
-        vLCDShowNum(sLCDArg.sLCDArg1.num4, 0);
-    if (sLCDArg.sLCDArg1.num5 < 0xa)
-        vLCDShowNum(sLCDArg.sLCDArg1.num5, 0);
-    if (sLCDArg.sLCDArg1.num6 < 0xa)
-        vLCDShowNum(sLCDArg.sLCDArg1.num6, 0);
+    vShowNum(0, sLCDArg.sLCDArg1.num0);
+    vShowNum(1, sLCDArg.sLCDArg1.num1);
+    vShowNum(2, sLCDArg.sLCDArg1.num2);
+    vShowNum(3, sLCDArg.sLCDArg1.num3);
+    vShowNum(4, sLCDArg.sLCDArg1.num4);
+    vShowNum(5, sLCDArg.sLCDArg1.num5);
+    vShowNum(6, sLCDArg.sLCDArg1.num6);
     /*show Vb*/
     vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Vb);
     /*show Qm*/
-    vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Qm);
+    vLCDShowPoint(eForword, sLCDArg.sLCDArg1.Qm);
     /*show charge*/
-    vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Charge);
+    vLCDShowPoint(ePower, sLCDArg.sLCDArg1.Charge);
     /*show error*/
-    vLCDShowPoint(eBackword, sLCDArg.sLCDArg1.Error);
+    vLCDShowPoint(eError, sLCDArg.sLCDArg1.Error);
     /*show sign*/
     vLCDShowGPRSSign(sLCDArg.sLCDArg2.Sign);
     /*show battery*/
     vLCDShowGPRSSign(sLCDArg.sLCDArg2.Battery);
     /*show cc*/
-    vLCDShowPoint(eBackword, sLCDArg.sLCDArg2.CC);
+    vLCDShowPoint(eCC, sLCDArg.sLCDArg2.CC);
     /*show m3h*/
-    vLCDShowPoint(eBackword, sLCDArg.sLCDArg2.M3H);
+    vLCDShowPoint(em3, sLCDArg.sLCDArg2.M3H);
     /*show Kpa*/
-    vLCDShowPoint(eBackword, sLCDArg.sLCDArg2.KPa);
+    vLCDShowPoint(eKPa, sLCDArg.sLCDArg2.KPa);
     /*show digital point*/
     vLCDShowDigitalPoint(sLCDArg.sLCDArg2.Point);
 }

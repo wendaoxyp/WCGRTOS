@@ -2,6 +2,9 @@
 #include "I2C_S.h"
 #include "Common.h"
 #include "INT.h"
+#include "WCGArg.h"
+#include "WCGDeBug.h"
+//#include "task.h"
 
 
 static sI2CDeviceAttribute sPCF8583;
@@ -15,7 +18,8 @@ Description: set INT0
 Input: void
 Output: void
  *************************************/
-void vPCF8583Init(void) {
+void vPCF8583Init(unsigned char* ucTime) {
+    struct tm sSetTime;
 #ifndef Have_Initialized_I2C
     vI2CInit();
 #define Have_Initialized_I2C
@@ -23,7 +27,20 @@ void vPCF8583Init(void) {
     INT0_Init();
     SetPCFINT0Tris = 1; //外部RTCC闹钟中断设置为输入 INT0
     /*set PCF8583 time*/
-    vPCF8583SetTimeByTimestamp((time_t*) & tNowTimestamp);
+    sSetTime.tm_year = ((unsigned int) HCD(ucTime[0]) *100) + HCD(ucTime[1]);
+    sSetTime.tm_mon = HCD(ucTime[2]) - 1;
+    sSetTime.tm_mday = HCD(ucTime[3]);
+    sSetTime.tm_hour = HCD(ucTime[4]);
+    sSetTime.tm_min = HCD(ucTime[5]);
+    sSetTime.tm_sec = HCD(ucTime[6]);
+    sSetTime.tm_isdst = 0;
+    sSetTime.tm_yday = 0;
+    sSetTime.tm_wday = 0;
+    vPCF8583SetTime(sSetTime);
+    /*set alarm by Timestamp*/
+
+    /*send sem to calc alarm time*/
+    //    vPCF8583SetTimeByTimestamp((time_t*) & tNowTimestamp);
 }
 
 /*************************************
@@ -53,9 +70,9 @@ void vPCF8583SetTime(struct tm stimes) {
     /*set hour :format[7];am,pm[6];ten hour[4:5];unit hour[0:3]*/
     ucTmp[PCF_T_HOUR] = (DCH(stimes.tm_hour) & 0x3F); //24hour
     /*set year and day:year[6:7];ten day[4:5];unit day[0-3]*/
-    ucTmp[PCF_T_DAY] = (GetMod(stimes.tm_year, 2) << 6) + (DCH(stimes.tm_mday) & 0x3F);
+    ucTmp[PCF_T_DAY] = ((stimes.tm_year & 0x03) << 6) + (DCH(stimes.tm_mday) & 0x3F);
     /*set weekday and month:weekday[5:7;ten months[4];unit months[0-3] */
-    ucTmp[PCF_T_MONTH] = (DCH(stimes.tm_wday) << 5) + (DCH(stimes.tm_mon + 1) & 0x1F); //注意tm结构的数据，1月份表示0
+    ucTmp[PCF_T_MONTH] = /* (DCH(stimes.tm_wday) << 5)*/0 + (DCH(stimes.tm_mon + 1) & 0x1F); //注意tm结构的数据，1月份表示0
     /*设置定时器*/
     ucTmp[7] = 0;
     /*设置报警控制器*/
@@ -108,15 +125,18 @@ Function: sPCF8583ReadTime
 Description: read real time ,output struct tm tpye varialbe
 Input: data 
 Output: is finish complete 
+Notice: month (struct tm )=0-11
  *************************************/
-struct tm sPCF8583ReadTime(void) {
+struct tm sPCF8583ReadTime(unsigned int *uiArgYear) {
     struct tm sReadTime;
-    unsigned char ucTmp[7] = {0, 0, 0, 0, 0, 0, 0};
+    unsigned char uiYear;
+    static unsigned char uiLastYear = 5;
+    unsigned char ucTmp[8] = {0, 0, 0, 0, 0, 0, 0};
     /*set PCF atrribute*/
     sPCF8583.ucSlaveAddress = PCF_ADD;
     sPCF8583.usRegisterAddress = PCF_CON_STA;
     sPCF8583.bIs16BitDevice = false;
-    sPCF8583.ucNeedDataBytes = 7;
+    sPCF8583.ucNeedDataBytes = 8;
     sPCF8583.pucNeedData = ucTmp;
 
     /*read PCF8583 register*/
@@ -133,9 +153,32 @@ struct tm sPCF8583ReadTime(void) {
     /*get month*/
     sReadTime.tm_mon = HCD(ucTmp[PCF_T_MONTH]&0x1F) - 1;
     /*get year 注意是否需要更新年份见2016这个变量放入E2ROM*/
-    sReadTime.tm_year = (ucTmp[PCF_T_DAY] >> 6 );
+    uiYear = (ucTmp[PCF_T_DAY] >> 6);
+    if ((uiYear != uiLastYear) && (uiLastYear != 5)) {
+        *uiArgYear += 1;
+    }
+    sReadTime.tm_year = *uiArgYear;
+    uiLastYear = uiYear;
+#if ((DebugWCGArg==1)&&(ENABLE_DEBUG==1))
+    vPrintWCGArg();
+    /*endif DebugWCGArg*/
+#endif
     return sReadTime;
 }
+
+///*************************************
+//Function: bIsLeapYear 
+//Description:uiYear is LeapYear
+//Input: ui Year  
+//Output: bool
+// *************************************/
+//static bool bIsLeapYear(unsigned int uiYear) {
+//    bool bSta = false;
+//    if ((uiYear / 4 == 0 && uiYear / 100 != 0) || (uiYear / 400 == 0)) {
+//        bSta = true;
+//    }
+//    return bSta;
+//}
 
 /*************************************
 Function: tPCF8583ReadTime 
@@ -143,18 +186,16 @@ Description: read real time
 Input: void  
 Output: time_t
  *************************************/
-time_t tPCF8583ReadTime(void) {
+time_t tPCF8583ReadTime(unsigned int* uiYearOffset) {
     struct tm sReadTime, sNowTime;
     time_t tReadTime;
     /*read real time ,output struct time type*/
-    sReadTime = sPCF8583ReadTime();
+    sReadTime = sPCF8583ReadTime(uiYearOffset);
     sReadTime.tm_yday = 0;
     sReadTime.tm_wday = 0;
     sReadTime.tm_isdst = 0;
     /*get time struct*/
     sNowTime = *gmtime((time_t *) & tNowTimestamp);
-    /*claculate year*/
-    sReadTime.tm_year = sNowTime.tm_year; //OffsetYear;
     /*struct time to timeStampe*/
     tReadTime = mktime(&sReadTime);
     Nop();

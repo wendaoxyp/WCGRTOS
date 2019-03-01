@@ -71,7 +71,7 @@ enum LCD_truth_table {
 /*hide 1 bit Nun*/
 #define NUMHIDE 0x0A
 
-union xLCDArg1 {
+struct xLCDArg1 {
     unsigned long num0 : 4;
     unsigned long num1 : 4;
     unsigned long num2 : 4;
@@ -85,7 +85,7 @@ union xLCDArg1 {
     unsigned long Error : 1; //31
 };
 
-union xLCDArg2 {
+struct xLCDArg2 {
     unsigned int Sign : 3; //2
     unsigned int Battery : 3; //5
     /*number cursor for set arg*/
@@ -97,10 +97,12 @@ union xLCDArg2 {
 };
 
 struct xLCDArg {
-    union xLCDArg1 sLCDArg1;
-    union xLCDArg2 sLCDArg2;
+    struct xLCDArg1 sLCDArg1;
+    struct xLCDArg2 sLCDArg2;
     /*current Screen ID*/
     unsigned char ucScreenID;
+    /*lcd refresh time*/
+    unsigned int uiRefreshTime;
 };
 /*define LCDArg*/
 extern struct xLCDArg sLCDArg;

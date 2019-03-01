@@ -3,7 +3,7 @@
 
 
 /*if need Debug ,set ENABLE_DEBUG to 1*/
-#define ENABLE_DEBUG              0
+#define ENABLE_DEBUG              1
 /*define test module,like LCD...*/
 #if (ENABLE_DEBUG == 1)
 /*if need debug LCD,change DebugLCD equal 1*/
@@ -24,7 +24,7 @@
 /*endif (DebugPCF8583 == 1)*/
 #endif
 
-/*if need debug CAT24C512,change DebugCAT24C512 equal 1*/
+
 #define DebugCAT24C512            0
 /*swtich test which function*/
 #if (DebugCAT24C512 == 1 )
@@ -32,11 +32,28 @@
 #define TestReadBytes             0
 /*endif (DebugCAT24C512 == 1 )*/
 #endif
+
+#define DebugGPRS                 0
+/*if need debug GPRSProtocal,change GPRSProtocal equal 1*/
+#if (DebugGPRS == 1 )
+#define TestGPRSOnline            0
+#define TestCopProtocalFormat     0
+/*endif (DebugGPRS == 1 )*/
+#endif
+#define DebugWCGArg          0
+/*if need debug GPRSProtocal,change GPRSProtocal equal 1*/
+/*endif DebugWCGArg*/
+//#endif
 /*endif (ENABLE_DEBUG == 1)*/
 #endif 
 
 
+
 extern void vDebugTaskHook(void);
+#if ((DebugWCGArg==1)&&(ENABLE_DEBUG==1))
+extern void vPrintWCGArg(void);
+/*endif DebugWCGArg*/
+#endif
 
 #endif
 

@@ -40,6 +40,7 @@ static uint8_t vErrorGenarateProtocal(ErrCode xErrorCode) {
     uint8_t ucGenarateSize;
     time_t tTimestamp;
     uint16_t usCRC16;
+    unsigned int uiYear = 2015;
 
     /*copy protocal header,'W','C','G'*/
     strncpy((char*) ucProtocalArray, "WCG", 3);
@@ -48,7 +49,7 @@ static uint8_t vErrorGenarateProtocal(ErrCode xErrorCode) {
     ucProtocalArray[ucGenarateSize] = 0x0E;
     ucGenarateSize += 1;
     /*get timestamp*/
-    tTimestamp = tPCF8583ReadTime();
+    tTimestamp = tPCF8583ReadTime(&uiYear);
     /*set timestamp, 'W','C','G',0x04,t4,t3,t2,t1*/
     strncpy((char*) (ucProtocalArray + ucGenarateSize), ((char*) & tTimestamp), 4);
     ucGenarateSize += 4;
@@ -56,7 +57,7 @@ static uint8_t vErrorGenarateProtocal(ErrCode xErrorCode) {
     ucProtocalArray[ucGenarateSize] = xErrorCode;
     ucGenarateSize += 1;
     /*get CRC,'W','C','G',0x04,t4,t3,t2,t1,err_code,CRCH,CRCL*/
-    usCRC16 = usCRC16Check(ucProtocalArray, 9);
+    usCRC16 = uiCRC16Check(ucProtocalArray, 9);
     ucProtocalArray[ucGenarateSize++] = (uint8_t) (usCRC16 >> 8);
     ucProtocalArray[ucGenarateSize++] = (uint8_t) (usCRC16);
     /*write data*/
@@ -91,7 +92,7 @@ void vErrorPrintCode(ErrCode xErrorCode, unsigned char usOutputSource) {
     switch (usOutputSource) {
         case OutputInLCD:
         {
-            vLCDShowNums(xErrorCode, SEGHIDE);
+            //            vLCDShowNums(xErrorCode, SEGHIDE);
             break;
         }
         case OutputToUser:
@@ -101,7 +102,7 @@ void vErrorPrintCode(ErrCode xErrorCode, unsigned char usOutputSource) {
         }
         case OutputBoth:
         {
-            vLCDShowNums(xErrorCode, SEGHIDE);
+            //            vLCDShowNums(xErrorCode, SEGHIDE);
             vErrorSendToUser(xErrorCode);
             break;
         }

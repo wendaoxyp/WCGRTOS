@@ -100,25 +100,34 @@ void vTaskTestLCD(void*parameter) {
 SemaphoreHandle_t xSemBinaryAlarm;
 
 void vTaskTestPCF(void*parameter) {
-    /*Initialization PCF8583*/
-    vPCF8583Init();
-    /*use rs485*/
-    _LATE6 = 1;
+    unsigned char ucSetTime[7] = {0x20, 0x12, 0x12, 0x31, 0x23, 0x59, 0x50};
     struct tm sReadTime;
     time_t tReadTimestamp;
     time_t tSetAlarmTimestamp;
+    unsigned int uiYear = (unsigned int) (HCD(ucSetTime[0])*100) + HCD(ucSetTime[1]);
 
+    /*Initialization PCF8583*/
+    vPCF8583Init(ucSetTime);
+    /*use rs485*/
+    _LATE6 = 1;
+    vUART3Init();
+#if (TestAlarm == 1)
     /*set clock time*/
     vPCF8583SetTimeByTimestamp((time_t*) & tNowTimestamp);
     /*set alrarm ttime*/
     tSetAlarmTimestamp = tNowTimestamp + 10;
     vPCF8583SetAlarmTimeByTimestamp(&tSetAlarmTimestamp);
+    /*end  of TestAlarm*/
+#endif
     /*create semaphorebinary*/
     xSemBinaryAlarm = xSemaphoreCreateBinary();
     for (;;) {
+        vTaskDelay(5000);
+        vDeBugPrintInformation("\r\nPCFTime:");
 #if (TestReadTime == 1)
         /**test  read time**/
-        sReadTime = sPCF8583ReadTime();
+        sReadTime = sPCF8583ReadTime(&uiYear);
+        vDeBugPrintStringAndNums("calc year is ", uiYear);
         vDeBugPrintStringAndNums("year is ", sReadTime.tm_year);
         vDeBugPrintStringAndNums("month is ", sReadTime.tm_mon);
         vDeBugPrintStringAndNums("mday is ", sReadTime.tm_mday);
@@ -230,13 +239,130 @@ void vTaskTestCAT(void* parameter) {
 }
 /*endif (DebugCAT24C512==1)*/
 #endif 
+#if (DebugGPRS == 1)
+#include "UART3.h"
+#if (TestCopProtocalFormat==1)
+#include "GPRSProtocol.h"
+#include "WCGArg.h"
+#include <string.h>
+/*end of (TestCopProtocalFormat==1)*/
+#endif
+
+/*************************************
+ * Function: vGPRSPrintGroup
+ * Description: print Group member
+ * Input: psGp
+ * Output: void
+ * notice: 
+ *************************************/
+void vGPRSPrintGroup(sGroupProtocal *psGp) {
+    vDeBugPrintHexNums("\nRecordTime:\t", psGp->RecordTime, 6);
+    vDeBugPrintHexNums("\nVb:\t", (unsigned char *) &(psGp->Vb), 8);
+    vDeBugPrintHexNums("\nVm:\t", (unsigned char *) &(psGp->Vm), 8);
+    vDeBugPrintHexNums("\nQb:\t", (unsigned char *) &(psGp->Qb), 4);
+    vDeBugPrintHexNums("\nQm:\t", (unsigned char *) &(psGp->Qm), 4);
+    vDeBugPrintHexNums("\nTemperature:\t", (unsigned char *) &(psGp->Temperature), 4);
+    vDeBugPrintHexNums("\nPressure:\t", (unsigned char *) &(psGp->Pressure), 4);
+    vDeBugPrintHexNums("\nStatuWord:\t", &(psGp->StatuWord), 1);
+    vDeBugPrintHexNums("\nAlarmWord:\t", psGp->AlarmWord, 3);
+    vDeBugPrintHexNums("\nSurplus:\t", (unsigned char *) &(psGp->Surplus), 8);
+}
+
+/*************************************
+ * Function: vGPRSPrintFrame
+ * Description: print Frame member
+ * Input: sFrameProtocal sFp
+ * Output: void
+ * notice: 
+ *************************************/
+void vGPRSPrintFrame(sFrameProtocal sFp) {
+    vDeBugPrintHexNums("\nFrameID:\t", &sFp.FrameID, 1);
+    vDeBugPrintHexNums("\nAllLength:\t", &sFp.AllLength, 1);
+    vDeBugPrintHexNums("\nFunctionCode:\t", &sFp.FunctionCode, 1);
+    vDeBugPrintHexNums("\nDeviceID:\t", sFp.DeviceID, 8);
+    vDeBugPrintHexNums("\nLocationNumber:\t", sFp.LocationNumber, 8);
+    vDeBugPrintHexNums("\nUserID:\t", sFp.UserID, 6);
+    vDeBugPrintHexNums("\nSendTime:\t", sFp.SendTime, 6);
+    vDebugSend("\nGroup1:", 8);
+    vGPRSPrintGroup(sFp.Group1);
+    vDebugSend("\nGroup2:", 8);
+    vGPRSPrintGroup(sFp.Group2);
+    vDebugSend("\nGroup3:", 8);
+    vGPRSPrintGroup(sFp.Group3);
+    vDebugSend("\nGroup4:", 8);
+    vGPRSPrintGroup(sFp.Group4);
+    vDeBugPrintHexNums("\nCurrentPrice:\t", sFp.CurrentPrice, 4);
+    vDeBugPrintHexNums("\nAllFrameNumbers:\t", &sFp.AllFrameNumbers, 1);
+    vDeBugPrintHexNums("\nCurrentFrameID:\t", &sFp.CurrentFrameID, 1);
+    vDeBugPrintHexNums("\nCRCL:\t", &sFp.CRCL, 1);
+    vDeBugPrintHexNums("\nCRCH:\t", &sFp.CRCH, 1);
+}
+
+/*define test GPRS function*/
+void vTaskTestGPRS(void* parameter) {
+    //    unsigned char ucWriteArray[10], ucReadArray[10];
+    unsigned char ucCnt, ucGroupNum = 4;
+    sGroupProtocal sGroup[4] ;
+    sFrameProtocal sFrame;
+    unsigned char pucTimes[4][6] = {
+        {0x15, 0x05, 0x19, 0x08, 0x00, 0x58},
+        {0x15, 0x05, 0x19, 0x09, 0x00, 0x58},
+        {0x15, 0x05, 0x19, 0x10, 0x00, 0x58},
+        {0x15, 0x05, 0x19, 0x11, 0x00, 0x58},
+    };
+    float fPressure[4] = {101.2, 150.6, 180.5, 102.3};
+    unsigned char ucPrint[250];
+
+    /*for use rs485 send*/
+    _LATE6 = 1;
+    vUART3Init();
+
+    for (;;) {
+#if (TestGPRSOnline==1)
+        Nop();
+#endif
+#if (TestCopProtocalFormat == 1)
+        ClearDat(ucPrint, 0, sizeof (ucPrint) - 1);
+        for (ucCnt = 0; ucCnt < ucGroupNum; ucCnt++) {
+            vGPRSPacketDataToGroup(sGroup + ucCnt, pucTimes[ucCnt], fPressure[ucCnt]);
+            vDeBugPrintInformation("~~~Start Packet Group:\r\n");
+            vGPRSGroupToChar(sGroup + ucCnt, ucPrint);
+            vDeBugPrintHexNums("\n!!!print Group char:\n", ucPrint, 50);
+            vDeBugPrintStringAndNums("\nprint Group member ", ucCnt);
+            vGPRSPrintGroup(sGroup + ucCnt);
+        }
+        vDeBugPrintInformation("///Start Packet Frame:\r\n");
+        vGPRSPacketData1InFrame(&sFrame);
+        vGPRSPacketGroupInFrame(&sFrame, sGroup, ucGroupNum);
+        vGPRSPacketData2InFrame(&sFrame, 1, 1);
+        vGPRSFrameToChar(&sFrame, ucPrint, ucGroupNum);
+        vDeBugPrintHexNums("\n!!!print Frame char:\n", ucPrint, sFrame.AllLength);
+        vDeBugPrintInformation("\nprint Group member:");
+        vGPRSPrintFrame(sFrame);
+        //        vGPRSFrameToChar();
+        vTaskDelay(5000);
+        /*endif (TestCopProtocalFormat == 1)*/
+#endif  
+    }
+}
+/*endif (DebugGPRS==1)*/
+#endif 
+#if ((DebugWCGArg == 1) && (ENABLE_DEBUG == 1))
+#include "WCGArg.h"
+
+void vPrintWCGArg(void) {
+    struct sGlobalWCGArg sArg;
+    vReadWCGArg(&sArg);
+    vDeBugPrintHexNums("\nWCG ARG:", (uint8_t*) & sArg, sizeof (struct sGlobalWCGArg));
+}
+/*endif DebugWCGArg*/
+#endif
 /*endif ENABLE_DEBUG==1*/
 #endif 
 
 
 
-
-#define tskDebugPCFStack  256
+#define tskDebugPCFStack  1024
 #define tskDebugPCFPriority 4 
 
 void vDebugTaskHook(void) {
@@ -253,6 +379,11 @@ void vDebugTaskHook(void) {
 #if (DebugCAT24C512 == 1)
     /*Create Test CAT24C512 task*/
     xTaskCreate(vTaskTestCAT, "debug CAT", tskDebugPCFStack, NULL, tskDebugPCFPriority, NULL);
+    /*endif (DebugCAT24C512 == 1)*/
+#endif
+#if (DebugGPRS== 1)
+    /*Create Test CAT24C512 task*/
+    xTaskCreate(vTaskTestGPRS, "debug GPRS", tskDebugPCFStack, NULL, tskDebugPCFPriority, NULL);
     /*endif (DebugCAT24C512 == 1)*/
 #endif
 }

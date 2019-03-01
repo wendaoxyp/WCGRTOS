@@ -13,7 +13,7 @@
 #include <xc.h>
 extern void FloatToChar(float *f, uint8_t *ch);
 extern void CharToFloat(float *f, uint8_t *ch);
-extern void DoubleToChar(long double *d, uint8_t *ch);
+extern void DoubleToChar(double *d, uint8_t *ch);
 extern uint8_t HCD(uint8_t dat);
 extern uint8_t DCH(uint8_t dat);
 extern void SetVaildData(uint16_t * dat, const uint32_t max, const uint16_t min);

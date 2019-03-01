@@ -1,14 +1,14 @@
 #include "CheckData.h"
 
 /*************************************
- * Function: CRC16_Check
+ * Function: uiCRC16Check
  * Description: CRC16校验程序
  * Input: pucCRCBuf:数据地址
  *        ucBufLenght:数据长度
  * Output: CRC_Value:CRC校验值
  * notice: 
  *************************************/
-uint16_t usCRC16Check(uint8_t *pucCRCBuf, const uint8_t ucBufLenght) {
+uint16_t uiCRC16Check(uint8_t *pucCRCBuf, const uint8_t ucBufLenght) {
     uint16_t usCount1, usCount2;
     uint16_t usCRCSumx;
 
@@ -24,17 +24,17 @@ uint16_t usCRC16Check(uint8_t *pucCRCBuf, const uint8_t ucBufLenght) {
                 usCRCSumx >>= 1;
             }
         }
-    }   
+    }
     return (usCRCSumx);
 }
 
 /*************************************
-Function: SumCheck 
+Function: usSumCheck 
 Description: 计算和校验的数值，
 Input: pucCRCBuf：数据，ucBufLenght：字节数 
 Output: 和校验结果值
  *************************************/
-uint16_t usSumCheck(uint8_t *pucCRCBuf, const uint8_t ucBufLenght) {
+uint16_t uiSumCheck(uint8_t *pucCRCBuf, const uint8_t ucBufLenght) {
     uint16_t usSum = 0;
     uint16_t usCount = ucBufLenght;
     while (usCount > 0) {
