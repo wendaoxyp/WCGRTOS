@@ -51,6 +51,7 @@ void vLCDInit(void) {
     LCDREFbits.LCDCST = 0;
     /*use four common pin*/
     LCDCON = 0x800B;
+
 }
 
 /*************************************
